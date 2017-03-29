@@ -1,0 +1,162 @@
+注：以下方法都不能用，不要再轻易尝试
+
+
+
+
+
+
+
+方法：ap-hotspot
+
+终端里输入：
+$ sudo add-apt-repository ppa:nilarimogard/webupd8
+$ sudo apt-get update
+$ sudo apt-get install ap-hotspot
+$ sudo ap-hotspot configure  //这一步会检查ubuntu的网络和WIFI接口，确定后会提示你配置热点，输入ssid和密码之类的就行了
+$ sudo ap-hotspot start
+
+好了，Android手机顺利识别并连接上了。
+
+查看wifi详细信息
+	cd /etc/NetworkManager/system-connections/
+	ll #看看你的wifi名字
+	sudo vi [wifi名字] 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+在Ubuntu的
+terminal中输入rfkill list 
+all，可以查看到例如无线wifi、蓝牙之类软硬件是否被锁住的信息，例如wifi，有软件block和硬件block两项，任一个为yes都会导致无
+法使用，如果是hard block：yes，那么就要在机器硬件上打开相应开关，我自己的笔记本有一个无线网卡开关，打开后，再输入rfkill 
+list all就会显示为no；如果是soft block：yes，那么则需要调用rfkill unblock 
+命令打开相应的应用，比如rfkill list all显示如下：
+
+0: phy0: Wireless LAN
+Soft blocked: no
+Hard blocked: no
+1: hp-wifi: Wireless LAN
+Soft blocked: yes
+Hard blocked: no
+2: hp-bluetooth: Bluetooth
+Soft blocked: no
+Hard blocked: no
+
+wifi前的序号是1，那么则需要输入rfill unblock 1即可解锁软件锁定	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+然后查看无线网卡“wlan0”驱动的具体信息
+	$ethtool -i wlan0
+	
+driver: wl0
+version: 6.30.223.141 (r415941)
+firmware-version: 
+bus-info: 
+supports-statistics: no
+supports-test: no
+supports-eeprom-access: no
+supports-register-dump: no
+supports-priv-flags: no
+
+确定你的当前无线网卡驱动到底支不支持AP模式,即ap mode：
+	$ sudo iwconfig wlan0 mode master
+	可以看到执行错误，所以不支持AP模式了。
+	
+	$ iw list
+	Supported interface modes:
+       * IBSS
+       * managed
+可以看到supported interface modes下面并没有“AP”，所以我的网卡是确定不支持AP模式了。
+
+先查看你的无线网卡驱动芯片：
+代码:
+lspci -vvnn | grep 14e4
+
+
+我的输出信息：
+代码:
+08:00.0 Network controller [0280]: Broadcom Corporation BCM4313 802.11bgn Wireless Network Adapter [14e4:4727] (rev 01)
+
+然后进行驱动间的切换：
+首先关闭已有无线网卡驱动模块：
+sudo modprobe -r b43 bcma
+sudo modprobe -r brcmsmac bcma
+sudo modprobe -r wl
+由于前文中提到我的网卡驱动程序是“wl0”，所以只用执行第三条就OK了
+
+然后加载“brcmsmac”驱动：
+代码:
+sudo modprobe brcmsmac # 载入模块
+
+
+然后运行：
+代码:
+iw list
+
+可见输出：
+代码:
+Supported interface modes:
+       * IBSS
+       * managed
+       * AP
+       * AP/VLAN
+       * monitor
+
+已经有AP了。
+
+查看无线网卡驱动
+		frank@G470:~$ ethtool -i wlan0
+driver: brcmsmac
+version: 3.13.0-32-generic
+firmware-version: 610.812
+bus-info: bcma0:0
+supports-statistics: yes
+supports-test: no
+supports-eeprom-access: no
+supports-register-dump: no
+supports-priv-flags: no
+
+		$ iw list
+Supported interface modes:
+		 * IBSS
+		 * managed
+		 * AP
+		 * AP/VLAN
+		 * monitor
+
+激活网卡设备
+		$ sudo ifup wlan0 # 停止命令为 sudo ifdown wlan0
+		
+ethtool -i wlan0 No such device
+
+
+

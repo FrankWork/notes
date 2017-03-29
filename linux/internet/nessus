@@ -1,0 +1,24 @@
+ubuntu下的安装方法：
+1. sudo apt-get install nessus nessusd nessus-plugins
+2. 到nessus官方网站注册
+3. 邮箱取回 ”activation code”
+3. 更新 plugins
+sudo /usr/bin/nessus-fetch --register XXXX-XXXX-XXXX-XXXX-XXXX （ubuntu8.04以上）
+sudo /opt/nessus/bin/nessus-fetch --register XXXX-XXXX-XXXX-XXXX-XXXX (ubuntu8.04用户)
+4. 添加用户
+sudo /usr/sbin/nessus-adduser
+输入用户名之后直接回车，进入密码设置
+5. 启动nessusd
+sudo nessusd -D
+6. 运行：控制台输入 nessus
+使用
+1. 执行Nessus。
+2. 在Plugins的选单画面中, 选取您希望分析的漏洞的服务类型, 例如拒绝服务式攻击(DoS)。
+3. 在Scan Options的菜单中,
+* Port Range: 输入您希望扫描的端口(Port)范围
+* Optimize the test: 优化您的扫描程序。建议选取。
+其他选项建议保持默认。
+4. 在 Target Selection 选单当中, 输入您希望扫描的主机IP地址
+5. 按 "Start Scan" 开始扫描。
+激活
+Nessus对个人用户是免费的，只需要在官方网站上填邮箱，立马就能收到注册号了，对应商业用户是收费的。

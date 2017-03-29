@@ -1,0 +1,19 @@
+http://doc.scrapinghub.com/shub.html
+
+installation
+	sudo pip install --upgrade pip
+	sudo pip install shub
+
+help
+	shub 
+	shub schedule --help
+
+use
+    $ shub login
+	Enter your API key from https://dash.scrapinghub.com/account/apikey
+	This will save your Scrapinghub API key to a file in your home directory (~/.scrapinghub.yml) and is necessary for access to projects associated with your Scrapinghub account.
+
+	Next, navigate to a Scrapy project that you wish to upload to Scrapinghub. You can deploy it to Scrapy Cloud via:
+		shub deploy
+
+
