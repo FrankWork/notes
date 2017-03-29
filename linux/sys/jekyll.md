@@ -1,4 +1,11 @@
-docker pull jekyll/jekyll
+$ sudo apt-get install ruby-full
+$ sudo gem install jekyll
 
-docker run --rm --label=jekyll --volume=$(pwd):/srv/jekyll \
-  -it -p 127.0.0.1:4000:4000 jekyll/jekyll jekyll serve
+$ jekyll build
+# => The current folder will be generated into ./_site
+$ jekyll build --watch --destination <destination>
+# => The current folder will be generated into <destination>
+#    watched for changes, and regenerated automatically.
+$ jekyll serve
+# => A development server will run at http://localhost:4000/
+# Auto-regeneration: enabled. Use `--no-watch` to disable.
