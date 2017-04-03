@@ -119,7 +119,7 @@ $ git checkout master
 $ git merge iss53
 删掉已经合并的分支
 $ git branch -d iss53
-
+$ git push origin --delete <branch_name>
 sha: ceea27c51d624e692aeb236c9ba1eb01d59d20cb
 https://github.com/FrankWork/LeetCode.git
 
