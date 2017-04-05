@@ -16,6 +16,10 @@ sudo apt-get clean && sudo apt-get autoclean 清理无用的包
 sudo apt-get autoremove 自动卸载
 sudo apt-get check 检查是否有损坏的依赖
 
+# 强制解锁
+sudo rm /var/cache/apt/archives/lock
+sudo rm /var/lib/dpkg/lock
+
 # 编辑源：
 sudo gedit /etc/apt/sources.list
 
