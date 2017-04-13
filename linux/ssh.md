@@ -23,6 +23,7 @@ frank@G470:~$ ssh dailei@219.216.65.186
 jiangbojian@202.118.18.60's password:.
 Last login: Fri Sep 23 11:23:37 2016 from 219.216.78.76
 
+
 # SSH退出后仍运行程序
 $ nohup program &
 $ nohup ./hierarchy-phrase.sh &

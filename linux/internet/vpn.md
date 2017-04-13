@@ -44,7 +44,7 @@ $ ss-server -c .ss-config.2.json
 sudo apt-get install polipo
 sudo vim /etc/polipo/config
 
-socksParentProxy = "localhost:1080"
+socksParentProxy = "localhost:1080" or "0.0.0.0:1080"
 socksProxyType = socks5
 
 sudo service polipo stop

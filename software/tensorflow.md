@@ -6,6 +6,21 @@ https://www.tensorflow.org/
 
 # install
 
+## compile
+
+sudo apt-get install openjdk-8-jdk
+wget bazel-<VERSION>-dist.zip from https://github.com/bazelbuild/bazel/releases
+unzip bazel-<VERSION>-dist.zip
+bash ./compile.sh
+mv output/bazel ~/bin/bazel
+
+cd tensorflow  # cd to the top-level directory created
+./configure
+bazel fetch --config=opt //tensorflow/tools/pip_package:build_pip_package # cpu only
+tar zcvf cache.tar.gz ~/.cache/bazel/_bazel_username
+bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package # cpu only
+
+## pip install
 $ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp35-cp35m-linux_x86_64.whl
 $ sudo -H pip3 install --upgrade $TF_BINARY_URL
 
