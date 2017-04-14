@@ -10,6 +10,8 @@ copy these keys to the server
 	you@local: $ cat ~/.ssh/id_rsa.pub | ssh git@remote-server "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 	           $chmod 700 ~/.ssh
 	           $chmod 600 ~/.ssh/authorized_keys
+    git@server: $ chmod 700 .ssh
+    git@server: $ chmod 600 .ssh/authorized_keys
 set up a remote repository
 	git@server: $ mkdir ~/command-note.git
 	git@server: $ cd ~/command-note.git
