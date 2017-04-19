@@ -16,7 +16,10 @@ mv output/bazel ~/bin/bazel
 
 cd tensorflow  # cd to the top-level directory created
 ./configure
-bazel fetch --config=opt //tensorflow/tools/pip_package:build_pip_package # cpu only
+
+bazel --output_user_root=~/fetched fetch --config=opt //tensorflow/tools/pip_package:build_pip_package # cpu only
+
+
 tar zcvf cache.tar.gz ~/.cache/bazel/_bazel_username
 bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package # cpu only
 
