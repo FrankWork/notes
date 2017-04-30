@@ -14,14 +14,19 @@ unzip bazel-<VERSION>-dist.zip
 bash ./compile.sh
 mv output/bazel ~/bin/bazel
 
+git clone https://github.com/tensorflow/tensorflow
 cd tensorflow  # cd to the top-level directory created
 ./configure
 
-bazel --output_user_root=~/fetched fetch --config=opt //tensorflow/tools/pip_package:build_pip_package # cpu only
-
+bazel fetch --config=opt //tensorflow/tools/pip_package:build_pip_package # cpu only
+ls $(bazel info output_base)/external
 
 tar zcvf cache.tar.gz ~/.cache/bazel/_bazel_username
 bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package # cpu only
+bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package  # gpu
+
+bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+pip install /tmp/tensorflow_pkg/tensorflow-1.1.0rc1-cp35-cp35m-linux_x86_64.whl
 
 ## pip install
 $ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp35-cp35m-linux_x86_64.whl
