@@ -28,6 +28,30 @@ bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_
 bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 pip install /tmp/tensorflow_pkg/tensorflow-1.1.0rc1-cp35-cp35m-linux_x86_64.whl
 
+
+## compile sonnet
+
+$ git clone --recursive https://github.com/deepmind/sonnet
+$ cd sonnet/tensorflow
+$ ./configure
+$ cd $(bazel info output_base)
+$ tar zcvf external.tar.gz external/
+$ cd ../
+
+tar zcvf sonnet.tar.gz sonnet
+
+$ mkdir /tmp/sonnet
+$ bazel build --config=opt :install
+$ ./bazel-bin/install /tmp/sonnet
+
+$ pip install /tmp/sonnet/*.whl
+
+$ cd ~/
+$ python
+>>> import sonnet as snt
+>>> import tensorflow as tf
+>>> snt.resampler(tf.constant([0.]), tf.constant([0.]))
+
 ## pip install
 $ export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp35-cp35m-linux_x86_64.whl
 $ sudo -H pip3 install --upgrade $TF_BINARY_URL
