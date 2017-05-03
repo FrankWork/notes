@@ -28,6 +28,17 @@ bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_
 bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 pip install /tmp/tensorflow_pkg/tensorflow-1.1.0rc1-cp35-cp35m-linux_x86_64.whl
 
+cd ~ # to fix ImportError: No module named pywrap_tensorflow_internal
+python
+>>> import tensorflow as tf
+
+ImportError: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found
+
+strings /usr/lib64/libstdc++.so.6 | grep GLIBC #centos
+
+cat /etc/environment
+
+export LD_LIBRARY_PATH=
 
 ## compile sonnet
 
