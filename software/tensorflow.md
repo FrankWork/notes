@@ -33,6 +33,7 @@ python
 >>> import tensorflow as tf
 
 ImportError: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found
+ImportError: /lib64/libm.so.6: version `GLIBC_2.23'
 
 strings /usr/lib64/libstdc++.so.6 | grep GLIBC #centos
 
