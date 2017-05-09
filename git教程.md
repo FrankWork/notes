@@ -88,6 +88,8 @@ Setup a Local Repository
 ### Viewing the Commit History
 	git log
 		
+## 列出文件
+	git ls-files
 ## Git远程更新
 $ git remote -v
 origin	https://github.com/dmlc/mxnet.git (fetch)
@@ -126,7 +128,38 @@ $ git branch -d iss53
 $ git push origin --delete <branch_name>
 sha: ceea27c51d624e692aeb236c9ba1eb01d59d20cb
 https://github.com/FrankWork/LeetCode.git
+远程获取多个分支
+$ git branch -r
+  origin/baseline
+  origin/master
+$ git checkout baseline
 
+`git pull origin other-branch` is equal to `git fetch origin other-branch && git merge other-branch`
+
+
+# 撤销branch合并
+
+$ git log
+commit 885ecaff2132c42008f4703766aceed2dd8715c4
+Date:   Tue May 9 09:59:19 2017 +0800
+
+    embeddings
+
+commit aa5592ab474962da40b5266cf3ee6befebfd8c64
+Merge: d4065f2 ac0e432
+Date:   Tue May 9 09:54:56 2017 +0800
+
+    merge baseline
+
+commit d4065f2672cc542b0d21ce144dcb9e1929544ea3
+Date:   Mon May 8 23:48:12 2017 +0800
+
+    readme
+
+$ git reset d4065f2672cc542b0d21ce144dcb9e1929544ea3
+$ git checkout *.py
+$ git add.. && git commit ..
+$ git push -f origin master
 
 # 例子 
 $ cd '/home/frank/work/Coursera/Machine Learning'
