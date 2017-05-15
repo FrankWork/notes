@@ -118,11 +118,17 @@ $ swiftc test.swift
 ----------------------------------
 $ mkdir Hello
 $ cd Hello
-$ touch Package.swift
-$ mkdir Sources
-$ touch Sources/main.swift
-$ # write your code
+$ swift package init
+├── Package.swift
+├── Sources
+│   └── Hello.swift
+└── Tests
+    ├── HelloTests
+    │   └── HelloTests.swift
+    └── LinuxMain.swift
+
 $ swift build
+$ swift test
 $ .build/debug/Hello
 
 
