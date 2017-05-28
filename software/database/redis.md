@@ -1,27 +1,31 @@
+# install
+
 sudo apt-get install redis-server
 ps -aux|grep redis
 redis-cli
 127.0.0.1:6379> help
 
-#sudo easy_install redis
-#sudo pip install redis
+sudo pip install redis
 sudo apt-get install python-redis
 
 sudo apt-get install nginx
 sudo /etc/init.d/nginx start
 
-命令行客户端
+# 命令行客户端
 
 $redis-cli -h 127.0.0.1 -p 6379
 $redis-cli PING
 $redis-cli
+
+# set get
+
 >PING
 > echo hi
 >incr foo
 >get foo
 > get noexists
 >keys *
->select 1
+>select 1 # 切换到数据库1
 
 ?	匹配一个字符
 *	匹配任意个（包括０个）字符
@@ -61,7 +65,7 @@ string, hash, list, set, zset
 >bitop or res foo1 foo2
 >get res
 
-散列类型
+## 散列类型
 >hset car price 500
 >hset car name BMW
 >hget car name
@@ -76,7 +80,7 @@ string, hash, list, set, zset
 >hvals car
 >hlen car
 
-列表类型
+## 列表类型
 >lpush numbers 1
 >lpush numbers 2 3
 >rpush numbers 0 -1
@@ -97,7 +101,7 @@ string, hash, list, set, zset
 >linsert numbers after 7 3
 >linsert numbers before 2 1
 >rpoplpush source destination
-集合类型
+## 集合类型
 >sadd letters a
 >sadd letters a b c
 >srem letters c d
@@ -122,7 +126,7 @@ string, hash, list, set, zset
 >srandmember letters 2
 >srandmembers letters -2
 >spop letters
-有序集合
+## 有序集合
 >zadd score 89 tom 67 peter 100 david
 >zadd score 76 peter
 >zadd test 17e+307 a
@@ -149,7 +153,7 @@ string, hash, list, set, zset
 >zrevrank peter
 >zinterstore destination numkeys key [key ...] [weights weight [weight ...]] [aggregate sum|min|max]
 >zunionstore destination numkeys key [key ...] [weights weight [weight ...]] [aggregate sum|min|max]
-事物
+## 事物
 >multi
 >sadd "user:1:following" 2
 >sadd "user:2:following" 1
@@ -164,7 +168,7 @@ string, hash, list, set, zset
 
 >watch key 
 >unwatch
-生存时间，单位秒
+## 生存时间，单位秒
 >set session:29e3d uid1314
 >expire session:29e3d 900
 >ttl session:29e3d
