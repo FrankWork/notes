@@ -1,5 +1,22 @@
 # install
 
+//================================================================================
+ Package            架构             版本                  源              大小
+//================================================================================
+正在安装:
+ redis              x86_64           3.2.3-1.el7           epel           527 k
+为依赖而安装:
+ jemalloc           x86_64           3.6.0-1.el7           epel           105 k
+
+事务概要
+//================================================================================
+安装  1 软件包 (+1 依赖软件包)
+
+总下载量：631 k
+安装大小：2.6 M
+
+
+## ubuntu
 sudo apt-get install redis-server
 ps -aux|grep redis
 redis-cli
@@ -10,6 +27,10 @@ sudo apt-get install python-redis
 
 sudo apt-get install nginx
 sudo /etc/init.d/nginx start
+
+## centos
+$ yum install redis
+$ systemctl start redis
 
 # 命令行客户端
 
@@ -197,4 +218,13 @@ pexpire, expireat, pexpireat
 >PSUBSCRIBE channel.?*
 >SET foo bar
 >OBJECT ENCODING foo
+
+## 备份
+
+> SAVE
+> CONFIG GET dir
+$ systemctl stop redis
+$ scp /var/lib/redis/dump.rdb $ali:/var/lib/redis/
+$ systemctl restart redis
+
 
