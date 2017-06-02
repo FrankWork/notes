@@ -1,7 +1,13 @@
 # Install 
 
 $ sudo apt install vsftpd
+$ sudo vim /etc/vsftpd.conf
+```
+anon_root=/srv/ftp
+local_root=/
+```
 
+ftp://user:passwd@219.xxx.xx.170:/filename
 
 # 上传下载
 
