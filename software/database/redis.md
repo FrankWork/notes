@@ -18,19 +18,22 @@
 
 ## ubuntu
 sudo apt-get install redis-server
-ps -aux|grep redis
-redis-cli
-127.0.0.1:6379> help
-
-sudo pip install redis
-sudo apt-get install python-redis
-
-sudo apt-get install nginx
-sudo /etc/init.d/nginx start
+sudo systemctl start redis
 
 ## centos
 $ yum install redis
 $ systemctl start redis
+
+## 外网访问
+
+$ redis-cli
+> info
+config_file:
+
+$ vim /etc/redis/redis.conf # ubuntu
+$ vi /etc/redis.conf        # centos
+bind your-ip
+$ systemctl restart redis
 
 # 命令行客户端
 
