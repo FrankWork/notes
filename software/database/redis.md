@@ -24,7 +24,7 @@ sudo systemctl start redis
 $ yum install redis
 $ systemctl start redis
 
-## 外网访问
+## config
 
 $ redis-cli
 > info
@@ -32,8 +32,17 @@ config_file:
 
 $ vim /etc/redis/redis.conf # ubuntu
 $ vi /etc/redis.conf        # centos
-bind your-ip
+```
+ #bind 127.0.0.1
+requirepass your_redis_master_password
+
+```
 $ systemctl restart redis
+
+$ firewall-cmd --permanent --add-port=6379/tcp
+$ firewall-cmd --reload
+阿里云设置安全组
+
 
 # 命令行客户端
 
