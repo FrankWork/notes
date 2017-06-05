@@ -1,6 +1,10 @@
 # install 
 
 ## centos server 
+
+$ yum install epel-release
+$ yum -y update
+
 $ cd /etc/yum.repos.d/
 $ wget https://copr.fedoraproject.org/coprs/librehat/shadowsocks/repo/epel-7/librehat-shadowsocks-epel-7.repo
 $ yum update
