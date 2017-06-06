@@ -1,7 +1,8 @@
 # Install 
 
 $ sudo apt install vsftpd
-$ sudo vim /etc/vsftpd.conf
+$ sudo vim /etc/vsftpd.conf # ubuntu
+$ sudo vim /etc/vsftpd/vsftpd.conf
 ```
 anon_root=/srv/ftp
 local_root=/
