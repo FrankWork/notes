@@ -163,8 +163,9 @@ $ git push -f origin master
 
 ## read src
 
-$ git checkout -b readsrc
+$ git checkout -b read-src
 $ git log --reverse
+$ git revert 388c115956a06267aeb71b24e467dafd3d968931 # to init commit
 
 
 # 例子 

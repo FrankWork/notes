@@ -1,4 +1,10 @@
 # install
+
+## centos
+$ yum install -y etcd kubernetes # k8s 77M/380M
+
+
+## other 
 https://github.com/kubernetes/kubernetes/releases
 
 $ tar zxvf kubernetes.tar.gz
