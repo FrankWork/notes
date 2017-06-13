@@ -161,6 +161,12 @@ $ git checkout *.py
 $ git add.. && git commit ..
 $ git push -f origin master
 
+## read src
+
+$ git checkout -b readsrc
+$ git log --reverse
+
+
 # 例子 
 $ cd '/home/frank/work/Coursera/Machine Learning'
 $ git init
