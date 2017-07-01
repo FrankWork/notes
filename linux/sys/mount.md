@@ -3,7 +3,9 @@
 	/dev/sda5
 	sudo mount -t ntfs -o ro /dev/sda1 /mnt/win1
 	sudo mount -t ntfs -o ro /dev/sda5 /mnt/win2
-	sudo umount /dev/sda1
+	sudo mount -t vfat -o rw /dev/sdb1 /mnt/usb
+	sudo mount -o remount,rw /mnt/usb
+	sudo umount /dev/sdb1
 	
 # USB
 $ mount | grep /media/frank/
