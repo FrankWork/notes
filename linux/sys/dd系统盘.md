@@ -83,6 +83,20 @@ Disk identifier: 0x0e0e8e70
 /dev/sdb1  *          0 2902111 2902112  1.4G  0 空
 /dev/sdb2       2888004 2892739    4736  2.3M  1 FAT12
 
+## 格式化U盘
+$ sudo umount /dev/sdb1
+$ sudo umount /dev/sdb2
+
+$ sudo mkfs.vfat /dev/sdb1
+$ sudo mkfs.vfat /dev/sdb2
+
+Disk /dev/sdb: 3.8 GiB, 4009754624 bytes, 7831552 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x00000000
+
 ## 卸载U盘
 		frank@G470:~$ ls -l /media/frank	卸载前
 总用量 18
@@ -97,6 +111,7 @@ drwx------ 3 frank frank 16384  1月  1  1970 Ubuntu 14.04 LTS amd641
 
 # 写入U盘
 	复制系统进U盘
+		$ sudo dd if=ubuntu-17.04-desktop-amd64.iso of=/dev/sdb
 		$ sudo dd if=~/下载/ubuntu-16.04-desktop-amd64.iso of=/dev/sdb1
 
 	基本命令格式
