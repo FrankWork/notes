@@ -54,6 +54,35 @@ brw-rw----  1 root disk      8,  32  5月 22 00:14 sdb
 brw-rw----  1 root disk      8,  33  5月 22 00:14 sdb1
 brw-rw----  1 root disk      8,  34  5月 22 00:14 sdb2
 
+
+		$ sudo fdisk -l
+
+Disk /dev/sda: 931.5 GiB, 1000204886016 bytes, 1953525168 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disklabel type: dos
+Disk identifier: 0x2bd2c32a
+
+设备       启动      Start     末尾    扇区   Size Id 类型
+/dev/sda1  *          2048     206847    204800   100M  7 HPFS/NTFS/exFAT
+/dev/sda2           206848  209922047 209715200   100G  7 HPFS/NTFS/exFAT
+/dev/sda3        209922048 1029122047 819200000 390.6G  7 HPFS/NTFS/exFAT
+/dev/sda4       1029124094 1953523711 924399618 440.8G  5 扩展
+/dev/sda5       1029124096 1936863231 907739136 432.9G 83 Linux
+/dev/sda6       1936865280 1953523711  16658432     8G 82 Linux 交换 / Solaris
+
+Disk /dev/sdb: 3.8 GiB, 4009754624 bytes, 7831552 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x0e0e8e70
+
+设备       启动   Start  末尾  扇区  Size Id 类型
+/dev/sdb1  *          0 2902111 2902112  1.4G  0 空
+/dev/sdb2       2888004 2892739    4736  2.3M  1 FAT12
+
 ## 卸载U盘
 		frank@G470:~$ ls -l /media/frank	卸载前
 总用量 18
