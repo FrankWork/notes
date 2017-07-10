@@ -97,6 +97,23 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 Disklabel type: dos
 Disk identifier: 0x00000000
 
+## 修复U盘 read only
+
+sudo umount /dev/sdb1
+sudo hdparm -r0 /dev/sdb
+
+id frank
+
+sudo mount -o uid=1000 /dev/sdb1 /mnt/usb
+
+sudo hdparm -r0 /dev/sdb1
+sudo mount -o remount,rw /dev/sdb1
+
+## 格式化U盘
+
+sudo fsck.vfat /dev/sdb1
+sudo wipefs -a "/dev/sdb1"
+
 ## 卸载U盘
 		frank@G470:~$ ls -l /media/frank	卸载前
 总用量 18
