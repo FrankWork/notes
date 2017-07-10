@@ -10,6 +10,15 @@ $ systemctl start kube-scheduler
 $ systemctl start kubelet
 $ systemctl start kube-proxy
 
+## ubuntu
+
+sudo apt install snapd
+sudo usermod -a -G lxd $USER
+newgrp lxd
+sudo snap install conjure-up --classic
+conjure-up kubernetes  # re-login may be required at that point if you just installed snap utility
+
+
 ## other 
 https://github.com/kubernetes/kubernetes/releases
 
