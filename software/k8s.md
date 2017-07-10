@@ -1,5 +1,10 @@
 # install
 
+
+## cubeadm
+
+
+
 ## centos
 $ yum install -y etcd kubernetes # k8s 77M/380M
 $ systemctl start etcd
