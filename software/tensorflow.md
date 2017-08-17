@@ -6,6 +6,13 @@ https://www.tensorflow.org/
 
 # install
 
+
+$ pip install tensorflow      # CPU support (no GPU support)
+$ pip install tensorflow-gpu  # GPU support
+
+$ pip install dm-sonnet
+$ pip install dm-sonnet-gpu
+
 ## compile
 
 sudo apt-get install openjdk-8-jdk
@@ -18,12 +25,8 @@ git clone https://github.com/tensorflow/tensorflow
 cd tensorflow  # cd to the top-level directory created
 ./configure
 
-bazel fetch --config=opt //tensorflow/tools/pip_package:build_pip_package # cpu only
-ls $(bazel info output_base)/external
-
-tar zcvf cache.tar.gz ~/.cache/bazel/_bazel_username
-bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package # cpu only
-bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package  # gpu
+bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package # cpu
+bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package   # gpu
 
 bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 pip install /tmp/tensorflow_pkg/tensorflow-1.1.0rc1-cp35-cp35m-linux_x86_64.whl
@@ -31,15 +34,6 @@ pip install /tmp/tensorflow_pkg/tensorflow-1.1.0rc1-cp35-cp35m-linux_x86_64.whl
 cd ~ # to fix ImportError: No module named pywrap_tensorflow_internal
 python
 >>> import tensorflow as tf
-
-ImportError: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found
-ImportError: /lib64/libm.so.6: version `GLIBC_2.23'
-
-strings /usr/lib64/libstdc++.so.6 | grep GLIBC #centos
-
-cat /etc/environment
-
-export LD_LIBRARY_PATH=
 
 ## compile sonnet
 
