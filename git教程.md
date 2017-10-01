@@ -19,6 +19,7 @@ set up a remote repository
 Setup a Local Repository
 	you@local: $ git remote set-url origin git@e.com:home/git/my-project.git
 	you@local: $ git remote set-url origin ssh://git@e.com:port/home/git/my-project.git
+	you@local: $ git remote set-url origin ssh://git@e.com:/home/git/my-project.git
 	or
 	you@local: $ git init && git remote add origin git@e.com:home/git/my-project.git
 	you@local: $ git push origin master
