@@ -23,6 +23,13 @@ frank@G470:~$ ssh dailei@219.216.65.186
 jiangbojian@202.118.18.60's password:.
 Last login: Fri Sep 23 11:23:37 2016 from 219.216.78.76
 
+# 密钥登录
+
+you@local: $ cat ~/.ssh/id_rsa.pub | ssh you@remote "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+	   $chmod 700 ~/.ssh
+	   $chmod 600 ~/.ssh/authorized_keys
+you@remote: $ chmod 700 .ssh
+	    $ chmod 600 .ssh/authorized_keys
 
 # SSH退出后仍运行程序
 $ nohup program &
