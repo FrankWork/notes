@@ -16,12 +16,11 @@ set up a remote repository
 	git@server: $ mkdir ~/command-note.git
 	git@server: $ cd ~/command-note.git
 	git@server: $ git init --bare
-Setup a Local Repository
-	you@local: $ git remote set-url origin git@e.com:home/git/my-project.git
+Then Setup a Local Repository
+	you@local: $ git remote set-url origin git@e.com:/home/git/my-project.git
 	you@local: $ git remote set-url origin ssh://git@e.com:port/home/git/my-project.git
-	you@local: $ git remote set-url origin ssh://git@e.com:/home/git/my-project.git
 	or
-	you@local: $ git init && git remote add origin git@e.com:home/git/my-project.git
+	you@local: $ git init && git remote add origin git@e.com:/home/git/my-project.git
 	you@local: $ git push origin master
 	
 ## 安装git和ssh on PC:
