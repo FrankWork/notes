@@ -1,4 +1,18 @@
 # 挂载windows分区：
+
+$ sudo fdisk -l
+	设备       启动      Start     末尾    扇区   Size Id 类型
+/dev/sda1  *          2048     206847    204800   100M  7 HPFS/NTFS/exFAT
+/dev/sda2           206848  209922047 209715200   100G  7 HPFS/NTFS/exFAT
+/dev/sda3        209922048 1029122047 819200000 390.6G  7 HPFS/NTFS/exFAT
+/dev/sda4       1029124094 1953523711 924399618 440.8G  5 扩展
+/dev/sda5       1029124096 1936863231 907739136 432.9G 83 Linux
+/dev/sda6       1936865280 1953523711  16658432     8G 82 Linux 交换 / Solaris
+
+$ sudo mkdir /mnt/winc
+$ sudo mount -t ntfs -o ro /dev/sda2 /mnt/winc
+$ sudo unmount /dev/sda2
+
 	/dev/sda1
 	/dev/sda5
 	sudo mount -t ntfs -o ro /dev/sda1 /mnt/win1
