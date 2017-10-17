@@ -1,20 +1,16 @@
 # install 
 
-## centos server 
+# shadowsocks-go
 
-$ yum install epel-release
-$ yum -y update
-
-$ cd /etc/yum.repos.d/
-$ wget https://copr.fedoraproject.org/coprs/librehat/shadowsocks/repo/epel-7/librehat-shadowsocks-epel-7.repo
-$ yum update
-$ yum install shadowsocks-libev
-
-## ubuntu client
-sudo add-apt-repository ppa:hzwhuang/ss-qt5
-sudo apt-get update
-sudo apt-get install shadowsocks-qt5
-
+mkdir -p ~/bin/socks/
+go get github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-server 	# on server
+go get github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-local 	# on client
+cd $GOPATH/src/github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-server
+go build
+mv shadowsocks-server ~/bin/socks
+cd $GOPATH/src/github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-local 
+go build
+mv shadowsocks-local ~/bin/socks
 
 
 # config
@@ -31,7 +27,7 @@ sudo apt-get install shadowsocks-qt5
  "method":"aes-256-cfb",
 }
 
-防火墙开放shadowsocks服务端口:
+防火墙开放shadowsocks服务端口(server side):
 
 $ firewall-cmd --permanent --add-port=8888/tcp
 $ firewall-cmd --reload
@@ -39,33 +35,11 @@ $ firewall-cmd --reload
 
 # usage
 
-运行服务端：
-$ ss-server -c .ss-config.1.json
-$ ss-server -c .ss-config.2.json
+$ ./shadowsocks-server -c server.json # on server
 
-# 全局代理
-
-sudo apt-get install polipo
-sudo vim /etc/polipo/config
-
-socksParentProxy = "localhost:1080" or "0.0.0.0:1080"
-socksProxyType = socks5
-
-sudo service polipo stop
-sudo service polipo start
-
-vim ~/.bashrc
-alias hp="http_proxy=http://localhost:8123"
-source ~/.bashrc
-
-curl ip.gs
-当前 IP：118.202.45.132 来自：中国辽宁沈阳东北大学 教育网
-hp curl ip.gs
-当前 IP：107.181.152.55 来自：美国加利福尼亚州洛杉矶alpharacks.com syn.ltd.uk
-
-export http_proxy=http://localhost:8123
-curl ip.gs
-unset http_proxy
+$ ./shadowsocks-local -c client.json # on client
+$ alias hp="http_proxy=socks5://127.0.0.1:1080"
+$ hp curl ip.gs
 
 
 
