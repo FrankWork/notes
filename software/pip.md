@@ -5,6 +5,12 @@ sudo apt-get install python-pip
 sudo -H pip install --upgrade pip
 sudo -H pip uninstall xxx
 
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
+vim ~/.config/pip/pip.conf
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+
+
 Usage:
   pip <command> [options]
 
