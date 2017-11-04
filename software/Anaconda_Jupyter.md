@@ -1,8 +1,11 @@
 # Install Anaconda
 
+```
 $ wget https://repo.continuum.io/archive/Anaconda3-5.0.0.1-Linux-x86_64.sh
 $ bash Anaconda3-5.0.0.1-Linux-x86_64.sh
-
+$ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+$ conda config --set show_channel_urls yes
+```
 
 ## update
 
