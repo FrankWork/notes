@@ -1,22 +1,22 @@
 # Getting Started(Git Pro)
 ## 安装git on Server
 	you@server: $ sudo yum install git
-Then add a user for Git.
+### Then add a user for Git.
 	you@server: $ sudo useradd git
 	you@server: $ passwd git
-First create ssh keys on your local machine:
+### First create ssh keys on your local machine:
 	you@local: $ ssh-keygen -t rsa
-copy these keys to the server
+### copy these keys to the server
 	you@local: $ cat ~/.ssh/id_rsa.pub | ssh git@remote-server "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 	           $chmod 700 ~/.ssh
 	           $chmod 600 ~/.ssh/authorized_keys
     git@server: $ chmod 700 .ssh
     git@server: $ chmod 600 .ssh/authorized_keys
-set up a remote repository
+### set up a remote repository
 	git@server: $ mkdir ~/command-note.git
 	git@server: $ cd ~/command-note.git
 	git@server: $ git init --bare
-Then Setup a Local Repository
+### Then Setup a Local Repository
 	you@local: $ git remote set-url origin git@e.com:/home/git/my-project.git
 	you@local: $ git remote set-url origin ssh://git@e.com:port/home/git/my-project.git
 	or
