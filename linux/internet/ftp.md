@@ -1,14 +1,20 @@
-# Install 
+# FUCK!!
 
 $ sudo apt install vsftpd
 $ sudo vim /etc/vsftpd.conf # ubuntu
 $ sudo vim /etc/vsftpd/vsftpd.conf
+$ sudo firewall-cmd --permanent --add-port=21/tcp
+$ sudo firewall-cmd --reload
 ```
 anon_root=/srv/ftp
 local_root=/
 ```
+sudo netstat -lnp | grep ftp
+[sudo] lzh 的密码： 
+tcp6       0      0 :::21                   :::*                    LISTEN      21191/vsftpd    
 
-ftp://user:passwd@219.xxx.xx.170:/filename
+
+ftp://user:passwd@219.xxx.xx.170:20/filename
 ftp://lzh:.@219.216.73.53/home/lzh/下载/a.mp4
 
 # 上传下载
