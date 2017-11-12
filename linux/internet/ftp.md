@@ -9,6 +9,7 @@ local_root=/
 ```
 
 ftp://user:passwd@219.xxx.xx.170:/filename
+ftp://lzh:.@219.216.73.53/home/lzh/下载/a.mp4
 
 # 上传下载
 
