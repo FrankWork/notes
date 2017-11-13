@@ -16,6 +16,8 @@ $ sudo apt-get install mariadb-server
 
 从命令行连接到MariaDB :
 
+sudo mysql
+
 linuxtechi@mail:~$ mysql -u root -p
 Enter password:
 Welcome to the MariaDB monitor. Commands end with ; or \g.
@@ -85,8 +87,7 @@ mysql 用法：
 
 创建表：
 
-CREATE DATABASE IF NOT EXISTS db_name DEFAULT CHARACTER SET utf8 COLLATE
-utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS db_name DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 GRANT ALL PRIVILEGES ON wikidb.* TO 'wikiuser'@'localhost' 
 IDENTIFIED BY 'password';
@@ -117,3 +118,75 @@ MariaDB [mysql]> select Host, User, Password from user;
 	$ mysql -h localhost -u root -p123456 < F:\hello world\niuzi.sql
 第二种方法:
 	mysql>source F:\hello world\niuzi.sql 
+
+
+
+CREATE TABLE IF NOT EXISTS `runoob_tbl`(
+   `runoob_id` INT UNSIGNED AUTO_INCREMENT,
+   `runoob_title` VARCHAR(100) NOT NULL,
+   `runoob_author` VARCHAR(40) NOT NULL,
+   `submission_date` DATE,
+   PRIMARY KEY ( `runoob_id` )
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO table_name ( field1, field2,...fieldN )
+                       VALUES
+                       ( value1, value2,...valueN );
+
+
+# benchmark
+
+hbase(main):002:0> put 'test', 'row1', 'cf:a', 'value1'
+0 row(s) in 0.1590 seconds
+
+hbase(main):006:0> put 'test', 'row2', 'cf:b', 'value2'
+0 row(s) in 0.0090 seconds
+
+hbase(main):007:0> put 'test', 'row3', 'cf:c', 'value3'
+0 row(s) in 0.0050 seconds
+
+
+insert into test_table(row, cf, value) values ('rowa', 'cf:a', 'value1');
+Query OK, 1 row affected (0.04 sec)
+
+MariaDB [test]> insert into test_table(row, cf, value) values ('rowb', 'cf:b', 'value2');
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [test]> insert into test_table(row, cf, value) values ('rowc', 'cf:c', 'value3');
+Query OK, 1 row affected (0.03 sec)
+
+
+
+hbase(main):008:0> scan 'test'
+ROW                   COLUMN+CELL                                               
+ row1                 column=cf:a, timestamp=1510576073672, value=value1        
+ row2                 column=cf:b, timestamp=1510577283481, value=value2        
+ row3                 column=cf:c, timestamp=1510577358637, value=value3        
+3 row(s) in 0.0260 seconds
+
+
+
+select * from test_table;
++------+------+--------+
+| row  | cf   | value  |
++------+------+--------+
+| rowa | cf:a | value1 |
+| rowb | cf:b | value2 |
+| rowc | cf:c | value3 |
++------+------+--------+
+3 rows in set (0.00 sec)
+
+
+
+hbase(main):009:0> get 'test', 'row1'
+COLUMN                CELL                                                      
+ cf:a                 timestamp=1510576073672, value=value1                     
+1 row(s) in 0.0100 seconds
+
+select * from test_table where row='rowa';
++------+------+--------+
+| row  | cf   | value  |
++------+------+--------+
+| rowa | cf:a | value1 |
++------+------+--------+
+1 row in set (0.00 sec)

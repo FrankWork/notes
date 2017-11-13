@@ -1,10 +1,9 @@
 # install
 sudo apt-get install ssh
 
-# server
+# config
 
-219.216.64.88
-219.216.65.186
+/etc/ssh/sshd_config
 
 # usage: 
 
