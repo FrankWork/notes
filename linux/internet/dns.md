@@ -34,3 +34,5 @@ $ edit /etc/resolv.conf
 nameserver 127.0.0.1  # 設定第一台 DNS
 search neu6.edu.cn    # 設定 search domain 
 ```
+
+use dnsmasq !
