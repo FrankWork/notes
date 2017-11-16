@@ -29,12 +29,11 @@ $ vim server.json
 $ vim client.json
 {
   "server_password": [
-    ["x.x.x.x:8888", "mypassword"]
+    ["x.x.x.x:8888", "mypassword", "aes-256-cfb"]
   ]
   "local_address": "127.0.0.1",
   "local_port":1080,
   "timeout":300,
-  "method":"aes-256-cfb"
 }
 ```
 
@@ -66,8 +65,9 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 
-$ systemctl enable shadowsocks-server
-$ systemctl start shadowsocks-server
+$ sudo systemctl enable shadowsocks-server
+$ sudo systemctl start shadowsocks-server
+$ systemctl status shadowsocks-server
 ```
 
 ### firewall
