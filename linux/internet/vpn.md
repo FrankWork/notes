@@ -1,45 +1,83 @@
-# install 
+## install shadowsocks-go
 
-# shadowsocks-go
-
+```
 mkdir -p ~/bin/socks/
 go get github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-server 	# on server
 go get github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-local 	# on client
+
 cd $GOPATH/src/github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-server
 go build
 mv shadowsocks-server ~/bin/socks
+
 cd $GOPATH/src/github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-local 
 go build
 mv shadowsocks-local ~/bin/socks
+```
 
+## config
 
-# config
-
-/etc/shadowsocks-libev/config.json
-
+```
+$ vim server.json
 {
- "server":"0.0.0.0",
- "server_port":8888,
- "local_address": "127.0.0.1",
- "local_port":1080,
- "password":"mypassword",
- "timeout":300,
- "method":"aes-256-cfb",
+  "port_password": {
+    "8888": "mypassword"
+  },
+  "timeout":300,
+  "method":"aes-256-cfb"
 }
 
-防火墙开放shadowsocks服务端口(server side):
+$ vim client.json
+{
+  "server_password": [
+    ["x.x.x.x:8888", "mypassword"]
+  ]
+  "local_address": "127.0.0.1",
+  "local_port":1080,
+  "timeout":300,
+  "method":"aes-256-cfb"
+}
+```
 
-$ firewall-cmd --permanent --add-port=8888/tcp
-$ firewall-cmd --reload
+## usage
 
-
-# usage
-
+```
 $ ./shadowsocks-server -c server.json # on server
 
 $ ./shadowsocks-local -c client.json # on client
 $ alias hp="http_proxy=socks5://127.0.0.1:1080"
 $ hp curl ip.gs
+```
+
+## optional
+
+### start on boot
+
+```
+$ vim /etc/systemd/system/shadowsocks-server.service
+
+[Unit]
+Description=Shadowsocks Server
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/ssserver -c /etc/shadowsocks/ss-config.json
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+$ systemctl enable shadowsocks-server
+$ systemctl start shadowsocks-server
+```
+
+### firewall
+
+防火墙开放shadowsocks服务端口(server side):
+```
+$ firewall-cmd --permanent --add-port=8888/tcp
+$ firewall-cmd --reload
+```
+
 
 
 

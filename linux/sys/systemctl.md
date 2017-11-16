@@ -1,3 +1,5 @@
+# Systemd
+
 ## start and stop service
 ```
 sudo systemctl start app.service
@@ -27,4 +29,24 @@ systemctl status app
 systemctl is-active app
 systemctl is-enabled app
 systemctl is-failed app
+```
+
+## custom service
+
+```
+$ vim /etc/systemd/system/shadowsocks-server.service
+
+[Unit]
+Description=Shadowsocks Server
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/ssserver -c /etc/shadowsocks/ss-config.json
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+$ systemctl enable shadowsocks-server
+$ systemctl start shadowsocks-server
 ```
