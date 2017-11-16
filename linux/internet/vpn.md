@@ -29,10 +29,11 @@ $ vim server.json
 $ vim client.json
 {
   "server_password": [
+    ["[x:x:ipv6::x:x]:8888", "mypassword", "aes-256-cfb"],
     ["x.x.x.x:8888", "mypassword", "aes-256-cfb"]
   ]
-  "local_address": "127.0.0.1",
   "local_port":1080,
+
   "timeout":300,
 }
 ```
