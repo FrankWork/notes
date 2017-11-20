@@ -13,6 +13,14 @@ $ pip install tensorflow-gpu  # GPU support
 $ pip install dm-sonnet
 $ pip install dm-sonnet-gpu
 
+## install cuda
+
+- CUDA® Toolkit 8.0. `LD_LIBRARY_PATH` environment variable
+- The NVIDIA drivers associated with CUDA Toolkit 8.0.
+- cuDNN v6.0. `CUDA_HOME` environment variable
+- libcupti-dev on ubuntu
+
+
 ## compile
 
 sudo apt-get install openjdk-8-jdk
