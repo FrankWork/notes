@@ -16,10 +16,18 @@ $ pip install dm-sonnet-gpu
 ## install cuda
 
 - CUDA® Toolkit 8.0. `LD_LIBRARY_PATH` environment variable
+    http://developer.download.nvidia.com/compute/cuda/repos/
 - The NVIDIA drivers associated with CUDA Toolkit 8.0.
 - cuDNN v6.0. `CUDA_HOME` environment variable
 - libcupti-dev on ubuntu
 
+
+
+
+```
+from tensorflow.python.client import device_lib
+print(device_lib.list_local_devices())
+```
 
 ## compile
 
