@@ -2,7 +2,7 @@
 
 ```shell
 $ sudo mkdir -p /usr/java/
-$ sudo tar xzvf hbase-1.2.6-bin.tar.gz
+$ sudo tar xzvf hbase-1.2.6-bin.tar.gz # 100Mb
 $ cd hbase-1.2.6/
 
 $ sudo vim conf/hbase-env.sh
