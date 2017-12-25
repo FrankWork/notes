@@ -136,6 +136,15 @@ $ git checkout baseline
 
 `git pull origin other-branch` is equal to `git fetch origin other-branch && git merge other-branch`
 
+# Fork and Syncing a fork
+
+```bash
+$ git fetch upstream
+$ git checkout master
+$ git merge upstream/master
+$ git push origin master
+```
+
 
 # 撤销branch合并
 
@@ -159,7 +168,8 @@ Date:   Mon May 8 23:48:12 2017 +0800
 $ git reset d4065f2672cc542b0d21ce144dcb9e1929544ea3
 $ git checkout *.py
 $ git add.. && git commit ..
-$ git push -f origin master
+$ git push -f origin master远程库克隆
+
 
 ## read src
 
