@@ -139,6 +139,8 @@ $ git checkout baseline
 # Fork and Syncing a fork
 
 ```bash
+$ git remote -v
+$ git remote add upstream https://github.com/tensorflow/tensorflow.git
 $ git fetch upstream
 $ git checkout master
 $ git merge upstream/master
