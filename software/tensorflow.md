@@ -6,7 +6,7 @@ https://www.tensorflow.org/
 
 # install
 
-
+$ **pip install -i https://pypi.tuna.tsinghua.edu.cn/simple tensorflow**
 $ pip install tensorflow      # CPU support (no GPU support)
 $ pip install tensorflow-gpu  # GPU support
 
