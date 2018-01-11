@@ -15,6 +15,7 @@ $ pip install dm-sonnet-gpu
 
 ## install cuda
 
+- CUDA 9 and cuDNN 7 for tensorflow-1.5.0rc0
 - CUDA® Toolkit 8.0. `LD_LIBRARY_PATH` environment variable
     /usr/local/cuda-8.0/lib64
     http://developer.download.nvidia.com/compute/cuda/repos/
