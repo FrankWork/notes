@@ -51,6 +51,8 @@ git clone https://github.com/tensorflow/tensorflow
 cd tensorflow  # cd to the top-level directory created
 git branch -r
 git checkout r1.5
+
+
 bazel clean
 ./configure
 
@@ -61,11 +63,15 @@ bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 pip install /tmp/tensorflow_pkg/tensorflow-1.1.0rc1-cp35-cp35m-linux_x86_64.whl
 
 cd ~ # to fix ImportError: No module named pywrap_tensorflow_internal
-python
->>> import tensorflow as tf
+
+```python
+import tensorflow as tf
+import tensorflow.contrib.eager as tfe
+tfe.enable_eager_execution()
+```
+
 
 ## compile sonnet
-
 $ git clone --recursive https://github.com/deepmind/sonnet
 $ cd sonnet/tensorflow
 $ ./configure
