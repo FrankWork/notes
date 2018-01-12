@@ -64,6 +64,8 @@ pip install /tmp/tensorflow_pkg/tensorflow-1.1.0rc1-cp35-cp35m-linux_x86_64.whl
 
 cd ~ # to fix ImportError: No module named pywrap_tensorflow_internal
 
+export CUDA_VISIBLE_DEVICES=3
+
 ```python
 import tensorflow as tf
 import tensorflow.contrib.eager as tfe
