@@ -22,18 +22,7 @@ $ make install
 ```
 
 
-# compile gcc
 
-bzip2 -d gcc-5.4.0.tar.bz2
-tar xvf gcc-5.4.0.tar
-cd gcc-5.4.0
-./contrib/download_prerequisites
-cd ..
-mkdir objdir
-cd objdir
-$PWD/../gcc-5.4.0/configure --prefix=$HOME/bin/gcc-5.4.0 --disable-multilib --enable-languages=c,c++,go # 64-bit only
-make
-make install
 
 # compile glibc
 sudo apt install gawk
