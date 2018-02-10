@@ -11,7 +11,7 @@ $ sudo fdisk -l
 
 $ sudo mkdir /mnt/winc
 $ sudo mount -t ntfs -o ro /dev/sda2 /mnt/winc
-$ sudo unmount /dev/sda2
+$ sudo umount /dev/sda2
 
 	/dev/sda1
 	/dev/sda5
