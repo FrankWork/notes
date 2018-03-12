@@ -5,11 +5,11 @@ mkdir -p ~/bin/socks/
 go get github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-server 	# on server
 go get github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-local 	# on client
 
-cd $GOPATH/src/github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-server
+cd $GOROOT/src/github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-server
 go build
 mv shadowsocks-server ~/bin/socks
 
-cd $GOPATH/src/github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-local 
+cd $GOROOT/src/github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-local 
 go build
 mv shadowsocks-local ~/bin/socks
 ```
