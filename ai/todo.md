@@ -1,6 +1,28 @@
-batch norm
  word2vec
  初始化：   lecun_uniform /  glorot_normal / he_normal
  激活函数
  softmax图像
- https://zhuanlan.zhihu.com/p/28290988
+ 
+bp算法
+
+
+2：(数据结构)树合并；
+
+4: python如何把16位进制的数转换成2进制的数；
+
+5：MySQL的键的一个问题；
+
+6: linux下如何把两个文件按照列合并
+
+7：map-reduce的原理（问的基础，因为我简历没有mapreduce）
+
+
+1: 链表逆转
+
+2：1亿的文本如何放在100台机器上两两做相似度计算
+
+3：40亿数据如何用2G内存排序
+
+4；遍历树
+
+5：HMM原理
