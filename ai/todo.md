@@ -1,4 +1,3 @@
-bp算法
 adam
 lstm crf
 残差
