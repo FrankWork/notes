@@ -1,3 +1,11 @@
+# 卷积公式
+
+$$f(x)=\sum_{i,j}^{n}w_{i,j}x_{i,j}+b
+ $$
+
+$$ a_{i,j}=
+$$
+
 # 卷积复杂度
 
 $$ Time \sim O(M^{2} \cdot K^{2} \cdot C_{in} \cdot C_{out}) $$
@@ -21,7 +29,7 @@ def conv2d(img, kernel):
         for h in range(out_height):             # Iterate out_height
             for w in range(out_width):          # Iterate out_width
                 for ic in range(in_channels):   # Iterate in_channels
-                    patch = img[h: h + kernel_height, w: w + kernel_width, ic]
+                    patch = img[h: h + Two-dimensional correlation is equivalent to two-dimensional convolution with the filter matrix rotated 180 degrees.kernel_height, w: w + kernel_width, ic]
                     feature_maps[h, w, oc] += np.sum(patch * kernel[:, :, ic, oc])
 
     return feature_maps
@@ -41,3 +49,9 @@ def conv2d(img, kernel):
 4. CNN抓住此共性的手段主要有四个：局部连接／权值共享／池化操作／多层次结构。
 5. 局部连接使网络可以提取数据的局部特征；权值共享大大降低了网络的训练难度
    池化操作与多层次结构一起，实现了数据的降维，将低层次的局部特征组合成为较高层次的特征
+
+## 池化层
+
+1. 提高平移伸缩不变性
+2. 降低维度，减少参数，防止过拟合
+3. 减少无关信息
