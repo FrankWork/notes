@@ -1,4 +1,3 @@
-adam
 lstm crf
 残差
 gan
