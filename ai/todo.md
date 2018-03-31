@@ -506,5 +506,4 @@ Python
 
 MySQL的键的一个问题；
 
-LDA
-层次聚类
+
