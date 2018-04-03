@@ -22,11 +22,11 @@ $$L=\sum_{t=1}L^t$$
 
 遗忘门，输入门, 候选值, 遗忘与更新操作，输出门，输出操作
 
-$$ f_{t} = \sigma(W_{f} \cdot[h_{t-1},x_{t}+b_{f}]) $$
-$$ i_{t} = \sigma(W_{i} \cdot[h_{t-1},x_{t}+b_{i}]) $$
-$$ \tilde{C_{t}} = tanh(W_{C} \cdot[h_{t-1},x_{t}+b_{C}]) $$
+$$ f_{t} = \sigma(W_{f} \cdot[h_{t-1},x_{t}]+b_{f}) $$
+$$ i_{t} = \sigma(W_{i} \cdot[h_{t-1},x_{t}]+b_{i}) $$
+$$ \tilde{C_{t}} = tanh(W_{C} \cdot[h_{t-1},x_{t}]+b_{C}) $$
 $$ C_{t} = f_{t}*C_{t-1} + i_{t}*\tilde{C_{t}}$$
-$$ o_{t} = \sigma(W_{o} \cdot[h_{t-1},x_{t}+b_{o}]) $$
+$$ o_{t} = \sigma(W_{o} \cdot[h_{t-1},x_{t}]+b_{o}) $$
 $$ h_{t}=o_{t}*tanh(C_{t}) $$
 
 
