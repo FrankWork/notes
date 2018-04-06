@@ -9,6 +9,12 @@ http://www.cnblogs.com/witcxc/archive/2011/12/28/2304704.html
 显示行号
     :set nu 	显示行号，设定之后，会在每一行的前缀显示该行的行号
     :set nonu
+wrap
+	:set wrap
+	:set nowrap
+show tab list
+	:set invlist
+	:set nolist
 复制操作
 　　yy命令复制当前整行的内容到vi缓冲区
 　　yw复制当前光标所在位置到单词尾字符的内容到vi缓存区，相当于复制一个单词
