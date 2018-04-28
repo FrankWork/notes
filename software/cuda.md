@@ -1,22 +1,22 @@
-# cuda
+All our prebuilt binaries have been built with CUDA 8 and cuDNN 6.
+We anticipate releasing TensorFlow 1.5 with CUDA 9 and cuDNN 7.
+
+# cuda 8.0 cudnn 6.0
 
 ```bash
-lsb_release -a
-sudo sh cuda_9.0.103_384.59_linux.run
+export CUDA_HOME="$HOME/cuda-8.0"
+export PATH="$CUDA_HOME/bin:$PATH"
+export LD_LIBRARY_PATH="$CUDA_HOME/lib64:$LD_LIBRARY_PATH"
 
-export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-export CUDA_HOME=/usr/local/cuda
+cd $CUDA_HOME/nvvm/libdevice
+ln -s libdevice.compute_50.10.bc libdevice.10.bc
 
-export PATH="$CONDA_PATH:$PATH"
+cp cuda/include/cudnn.h  $CUDA_HOME/include/
+
+chmod a+r $CUDA_HOME/include/cudnn.h
+chmod a+r $CUDA_HOME/lib64/libcudnn*
 ```
 
-# cudnn
 
-```bash
-tar -zxvf cudnn-9.0-linux-x64-v7.tgz
-sudo cp cuda/include/cudnn.h /usr/local/cuda/include/
-sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64/ -d
-sudo chmod a+r /usr/local/cuda/include/cudnn.h
-sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
-```
+# cuda 9.0 cudnn 7.0
+
