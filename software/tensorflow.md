@@ -40,18 +40,21 @@ print(sess.run(c))
 ## compile tensorflow
 
 sudo apt-get install openjdk-8-jdk
-wget https://github.com/bazelbuild/bazel/releases/download/0.9.0/bazel-0.9.0-dist.zip
+
+wget https://github.com/bazelbuild/bazel/releases/download/0.12.0/bazel-0.12.0-dist.zip
 mkdir bazel
 cp bazel-<VERSION>-dist.zip bazel/
-unzip bazel-<VERSION>-dist.zip
-bash ./compile.sh
+unzip bazel-<VERSION>-dist.zip -d bazel
+bash ./compile.sh 
 mv output/bazel ~/bin/bazel
 
 git clone https://github.com/tensorflow/tensorflow
 cd tensorflow  # cd to the top-level directory created
 git branch -r
-git checkout r1.5
+git checkout r1.5 
 
+git fetch origin r1.8:r1.8
+git checkout r1.8
 
 bazel clean
 ./configure
