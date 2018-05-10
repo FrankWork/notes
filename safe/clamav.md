@@ -56,7 +56,7 @@ sudo chattr +i /etc/crontab
 
 ## 最近变动文件
 
-$ ls -lt /usr/bin/ | head
+$ ls -lt /bin/ | head
 
 ## 异常服务
 
