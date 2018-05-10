@@ -37,5 +37,6 @@ $ sudo chmod -x /etc/cron.hourly/*
 $ ll /lib/libudev.so
 -rwxr-xr-x 1 root root 612K 5月  10 10:24 /lib/libudev.so*
 $ sudo chmod -x /lib/libudev.so
+$ cat /etc/crontab
 ```
 
