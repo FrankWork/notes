@@ -7,3 +7,10 @@ $ ls
 etc/  usr/  vb.rpm
 $ mv virtualbox ~/bin/
 
+
+## download only
+
+```bash
+sudo yum install --downloadonly --downloaddir=./ NetworkManager-wifi
+
+```

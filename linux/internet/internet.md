@@ -88,6 +88,32 @@ supports-priv-flags: no
 $ vim /etc/hosts                    
 
           
+# centos wifi
+
+TL-WN725N V1
+
+```bash
+lspci |grep -i network 查看无线网卡型号
+lsusb -v               查看外置无线网卡
+
+Bus 001 Device 018: ID 148f:2878 Ralink Technology, Corp.
 
 
+nmcli general status # 查看wifi enabled
+nmcli device status
 
+rpm -q NetworkManager-wifi
+yum install NetworkManager-wifi
+systemctl restart NetworkManager
+
+nmcli dev wifi list
+nmcli --ask dev wifi connect <wifi-name>
+
+systemctl is-enabled NetworkManager
+systemctl is-active NetworkManager
+
+chkconfig network off
+chkconfig wpa_supplicant off
+
+sudo yum install NetworkManager-wifi
+```
