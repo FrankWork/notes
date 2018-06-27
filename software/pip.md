@@ -1,5 +1,5 @@
 pip install --proxy http://localhost:8123 tensorflow
-
+pip install -i $tuna tensorflow-gpu==1.4.0
 
 sudo apt-get install python-pip
 sudo -H pip install --upgrade pip

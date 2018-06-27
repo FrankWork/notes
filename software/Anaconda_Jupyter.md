@@ -20,6 +20,10 @@ $ conda info --envs
 $ source activate bunnies # Switch to another environment
 $ source deactivate # Change your path from the current environment back to the root
 
+## install packages
+
+conda search tensorflow-gpu
+conda install package=version
 
 # PyTorch
 
