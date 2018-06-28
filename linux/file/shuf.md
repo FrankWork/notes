@@ -1,0 +1,1 @@
+shuf a.txt > a.txt.shuf
