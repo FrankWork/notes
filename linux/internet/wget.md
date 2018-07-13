@@ -1,3 +1,5 @@
+wget google.com -O foo.html
+
 1、下载整个http或者ftp站点。 
 wget http://place.your.url/here 
 这个命令可以将http://place.your.url/here 首页下载下来。使用-x会强制建立服务器上一模一样的目录，如果使用-nd参数，那服务器上下载的所有内容都会加到本地当前目录。 
