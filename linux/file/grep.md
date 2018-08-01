@@ -7,3 +7,4 @@ command option1 | grep 'data'
 grep --color 'data' fileName
 
 grep '[a-zA-Z]'
+grep '^\w$'
