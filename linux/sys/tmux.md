@@ -1,3 +1,11 @@
+$ git clone https://github.com/tmux/tmux.git
+$ cd tmux
+$ sh autogen.sh
+$ ./configure --prefix=$HOME && make -j 16 && make install
+
+
+
+
 apt install tmux
 
  tmux所有自带命令都默认需要先按Ctrl + b，然后再键入对应的命令

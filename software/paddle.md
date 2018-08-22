@@ -8,3 +8,11 @@ pip install paddlepaddle-gpu==0.14.0.post87
 pip install paddlepaddle-gpu==0.14.0.post85
 
 # For installation on other platform, refer to http://paddlepaddle.org/
+
+
+
+conda create -n paddle paddlepaddle
+source activate paddle
+pip install paddlepaddle
+
+source deactivate 

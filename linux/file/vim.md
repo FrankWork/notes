@@ -8,7 +8,7 @@ http://www.cnblogs.com/witcxc/archive/2011/12/28/2304704.html
 	 ls /usr/share/vim/vim74/syntax
 显示行号
     :set nu 	显示行号，设定之后，会在每一行的前缀显示该行的行号
-    :set nonu
+    :set nonu	
 wrap
 	:set wrap
 	:set nowrap
