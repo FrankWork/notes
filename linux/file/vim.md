@@ -13,7 +13,7 @@ wrap
 	:set wrap
 	:set nowrap
 show tab list
-	:set invlist
+	:set invlist 或 :set list
 	:set nolist
 复制操作
 　　yy  复制当前整行
@@ -47,6 +47,13 @@ show tab list
 	\v[\u4e00-\u9fa5]+ " 查找中文
 	[\u4e00-\u9fa5]\+  " 默认为magic, `+`需要加反斜杠
 
+替换
+	:%s/old_text/new_text/g
+
 跳转
 	:1 跳到文件头
 	:$ 跳到文件尾
+
+
+二进制编辑
+	vim -b file
