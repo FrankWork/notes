@@ -134,4 +134,21 @@ MATCH (cc:CreditCard)-[r]-(c:Customer)RETURN cc, r, c
 ```
 
 
+# 
+```sql
+CREATE (lbl:Label { name: "二手车" })
+CREATE (lbl:Label { name: "行业新闻" })
+MATCH (lbl: Label) RETURN lbl
 
+CREATE (doc:Doc { uuid:1, title: "20分钟卖掉一辆二手车 快来取经吧~" })
+CREATE (doc:Doc { uuid:2, title: "干货！2017年全国二手车市场行情报告！" })
+
+MATCH (doc:Doc) RETURN doc
+
+OPTIONAL MATCH (lbl:Label),(doc:Doc) WHERE lbl.name = "二手车" AND doc.uuid= 1 CREATE (doc)-[r:Classification]->(lbl) RETURN r
+OPTIONAL MATCH (lbl:Label),(doc:Doc) WHERE lbl.name = "行业新闻" AND doc.uuid= 2 CREATE (doc)-[r:Classification]->(lbl) RETURN r
+
+MATCH (lbl:Label) WHERE lbl.name = "二手车" CREATE (doc:Doc { uuid:3, title: "美女买二手路虎，被骗惨，称：他们完全就是把我当猪！" })-[r:Classification]->(lbl) RETURN r
+
+MATCH (doc:Doc)-[r]-(lbl:Label)RETURN doc, r, lbl
+```
