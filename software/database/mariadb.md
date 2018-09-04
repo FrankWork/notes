@@ -76,9 +76,9 @@ $ sudo /etc/init.d/mysql start
 
     完成后使用mysql命令连接，提示成功，为了确保正确可以再远程登陆测试一下。
 
-mysql 用法：
+# mysql 用法：
 
-创建：ｍysql samp_db < create_member.sql
+创建：mysql samp_db < create_member.sql
 登陆：mysql -h 127.0.0.1 -u root -p
 >show databases;
 >use wikidb;
@@ -120,6 +120,9 @@ MariaDB [mysql]> select Host, User, Password from user;
 	mysql>source F:\hello world\niuzi.sql 
 
 
+```sql
+CREATE DATABASE <DATABASE_NAME>;
+USE <DATABASE_NAME>;
 
 CREATE TABLE IF NOT EXISTS `runoob_tbl`(
    `runoob_id` INT UNSIGNED AUTO_INCREMENT,
@@ -129,8 +132,30 @@ CREATE TABLE IF NOT EXISTS `runoob_tbl`(
    PRIMARY KEY ( `runoob_id` )
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+SHOW TABLES;
+
 INSERT INTO table_name ( field1, field2,...fieldN )
                        VALUES
                        ( value1, value2,...valueN );
 
+INSERT INTO example (example_id, name, value, other_value)
+VALUES
+    (100, 'Name 1', 'Value 1', 'Other 1'),
+    (101, 'Name 2', 'Value 2', 'Other 2'),
+    (102, 'Name 3', 'Value 3', 'Other 3'),
+    (103, 'Name 4', 'Value 4', 'Other 4');
 
+DELETE FROM table_name;
+
+select count(*) from tb_name;
+
+SELECT uuid FROM news_tb WHERE uuid in ("fff", "679");
+
+-- 修改字段属性
+ALTER TABLE user10 MODIFY email VARCHAR(200) NOT NULL DEFAULT 'a@a.com';
+-- 将card移到test后面
+ALTER TABLE user10 MODIFY card CHAR(10) AFTER test;
+
+
+UPDATE 表名 SET 字段名1=值1，[ ，字段名2=值2，…] [ WHERE 条件表达式 ]
+```
