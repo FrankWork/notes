@@ -1,6 +1,6 @@
 C++ Cassandra
 
-
+fuck! can't compile
 
 ```bash
 cd /etc/sysconfig/network-scripts/
@@ -25,3 +25,4 @@ ninja-build -j8
 ./build/release/scylla --datadir tmp --commitlog-directory tmp --smp 1
 ./build/release/scylla --help
 ```
+
