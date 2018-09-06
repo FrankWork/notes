@@ -1,6 +1,17 @@
 C++ Cassandra
 
+
+
 ```bash
+cd /etc/sysconfig/network-scripts/
+ifup ifcfg-enp0s3
+vi ifcfg-enp0s3 
+    ONBOOT=yes
+
+firewall-cmd --zone=public --add-port=9042/tcp --permanent
+firewall-cmd --reload
+
+
 git clone https://github.com/scylladb/scylla.git
 cd scylla
 git submodule update --init --recursive
