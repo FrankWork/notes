@@ -121,6 +121,11 @@ MariaDB [mysql]> select Host, User, Password from user;
 
 
 ```sql
+
+ -- emoji
+ALTER DATABASE databasename CHARACTER SET utf8mb4;
+ALTER TABlE tablename CHARACTER SET utf8mb4;
+
 CREATE DATABASE <DATABASE_NAME>;
 USE <DATABASE_NAME>;
 
@@ -159,3 +164,12 @@ ALTER TABLE user10 MODIFY card CHAR(10) AFTER test;
 
 UPDATE 表名 SET 字段名1=值1，[ ，字段名2=值2，…] [ WHERE 条件表达式 ]
 ```
+
+
+# 模糊查询
+
+% ：表示任意0个或多个字符 SELECT * FROM [user] WHERE u_name LIKE '%三%'
+_ ： 表示任意单个字符
+[ ] ：表示括号内所列字符中的一个（类似正则表达式）
+[^ ] ：表示不在括号所列之内的单个字符
+查询内容包含通配符时, 而把特殊字符用“[ ]”括起便可正常查询

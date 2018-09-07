@@ -41,7 +41,7 @@ $ kill pid
 
 # Inserting and querying
 
-```
+```sql
 $ bin/cqlsh localhost
 cqlsh> SELECT cluster_name, listen_address FROM system.local;
 cqlsh> TRACING ON
@@ -52,17 +52,30 @@ CREATE KEYSPACE Testspace
     WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1}
     AND durable_writes = false;
 
+DESCRIBE keyspaces;
+
 USE Testspace;
 
 CREATE TABLE test_table (row_ text PRIMARY KEY, cf text, val text );
 
 INSERT INTO test_table (row_, cf, val) VALUES ('row1', 'cf:1', 'value1');
+INSERT INTO users (id, lastname) VALUES (999, 'Sparrow')  IF NOT EXISTS
+
+BEGIN BATCH
+  INSERT INTO purchases (user, balance) VALUES ('user1', -8) USING TIMESTAMP 19998889022757000;
+  INSERT INTO purchases (user, expense_id, amount, description, paid)
+    VALUES ('user1', 1, 8, 'burrito', false);
+APPLY BATCH;
 
 SELECT * FROM test_table;
 
 SELECT * FROM test_table WHERE row_='row1';
+SELECT * FROM test_table WHERE row_='row1' ALLOW FILTERING;
+SELECT count(*) FROM users;
 
 
+DELETE FROM news_tb where uuid='row1';
+TRUNCATE news_tb;
 ```
 
 # [CQL](http://cassandra.apache.org/doc/latest/cql/index.html)
