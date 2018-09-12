@@ -51,7 +51,7 @@ mv output/bazel ~/bin/bazel
 git clone https://github.com/tensorflow/tensorflow
 cd tensorflow  # cd to the top-level directory created
 git branch -r
-git checkout r1.5 
+git checkout r1.10 
 
 git fetch origin r1.8:r1.8
 git checkout r1.8
@@ -74,6 +74,19 @@ import tensorflow as tf
 import tensorflow.contrib.eager as tfe
 tfe.enable_eager_execution()
 ```
+
+## compile tensorflow lib
+
+git branch -r
+git checkout r1.10 
+
+bazel clean
+./configure
+bazel build --config=opt //tensorflow:libtensorflow_cc.so # cpu
+ls bazel-bin/tensorflow/
+    libtensorflow_cc.so     libtensorflow_framework.so
+
+https://github.com/FrankWork/tf-tutorials/tree/master/cc_tensor
 
 
 ## compile sonnet
