@@ -1,7 +1,5 @@
-Linux
-Download Visual Studio Code 64-bit or 32-bit for Linux.
-Make a new folder and extract VSCode-linux-x64.zip or VSCode-linux-x32.zip inside that folder.
-Double click on Code to run Visual Studio Code.
-Tip: If you want to run VS Code from the terminal, create the following link substituting /path/to/vscode/Code with the absolute path to the Code executable:
-	sudo ln -s /path/to/vscode/Code /usr/local/bin/code
-Now, you can simply type code . in any folder to start editing files in that folder.
+# 设置c++头文件路径
+
+如果 #include <iostream> 这一行下面有一条波浪线，提示你没有找到iostream这个文件，所以不能包含，把鼠标移动到这一行会出现一个黄色的小灯泡，点击小灯泡Edit includepath setting，编辑includePath，把你的头文件路径添加上就可以了。
+
+如”/full/path/to/libtorch/include"
