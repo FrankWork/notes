@@ -1,20 +1,34 @@
-用户自定义配置文件：~/.vimrc
 http://www.cnblogs.com/witcxc/archive/2011/12/28/2304704.html
+https://blog.csdn.net/tietao/article/details/6862341
+
+字体大小：xshell客户端 菜单栏->文件->属性->外观
+
+用户自定义配置文件：~/.vimrc
+配置文件
+	~/.vimrc
+	/etc/vimrc
 
 帮助
 	:help
 
-配置高亮颜色：
-	 ls /usr/share/vim/vim74/syntax
-显示行号
-    :set nu 	显示行号，设定之后，会在每一行的前缀显示该行的行号
-    :set nonu	
-wrap
-	:set wrap
-	:set nowrap
-show tab list
-	:set invlist 或 :set list
-	:set nolist
+设置 :set
+
+:set nu 			" 显示行号
+:set nonu			" 取消显示行号
+:set tabstop=4		" tab空格数
+:set shiftwidth=4	" 自动缩进时，缩进的空格数
+:set smartindent   	" 开启新行时智能缩进
+:set wrap			" 折叠过长文本
+:set nowrap			" 取消折叠
+:set invlist		" 显示特殊字符
+:set list			" 显示特殊字符
+:set nolist			" 取消显示特殊字符
+:set hlsearch   	" 搜索时高亮显示被找到的文本
+:set sm				" 显示匹配的括号
+:set cursorline		" 高亮显示当前行
+:set textwidth=79	" 自动折叠的文本最大长度
+:set nobackup		" 不自动备份
+
 复制操作
 　　yy  复制当前整行
 　　yw  复制一个字
@@ -31,7 +45,10 @@ show tab list
 	y     p    粘贴板为 "
 	"Ny   "Np  粘贴板为 N, 0<=N<=9
 	"+y   "+p   系统粘贴板
-	 
+
+删除
+	d$	删除到行尾
+
 回退
 	u   撤销上一步的操作
 
