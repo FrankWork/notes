@@ -29,6 +29,20 @@ https://blog.csdn.net/tietao/article/details/6862341
 :set textwidth=79	" 自动折叠的文本最大长度
 :set nobackup		" 不自动备份
 
+语法折叠
+:set foldmethod=syntax " 语法折叠
+	zc 关闭折叠； 
+	zo 打开折叠； 
+	za 打开/关闭折叠互相切换
+
+函数跳转
+	sudo apt-get install exuberant-ctags
+	ctags -R .
+	将光标移到想要跳转的函数或变量上，通过快捷键 " CTRL + ] "即可快速跳转，
+	通过快捷键“ CTRL + T ”，回到跳转之前的位置
+
+
+
 复制操作
 　　yy  复制当前整行
 　　yw  复制一个字
