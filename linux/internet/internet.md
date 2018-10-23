@@ -1,5 +1,21 @@
+# 查看网卡
 
-frank@G470:~$ ifconfig
+$ cat /proc/net/dev
+  lo
+  ens33
+$ ethtool -i ens33
+  driver:
+
+# 查看ip地址
+
+$ ip addr
+$ ip addr show 
+$ ip addr show ens33 # ens33为网卡设备
+
+
+# 其他
+
+frank@G470:~$ ifconfig # 此命令已被废弃，不再维护
 eth0      Link encap:以太网  硬件地址 dc:0e:a1:e8:8e:28  
           UP BROADCAST MULTICAST  MTU:1500  跃点数:1
           接收数据包:0 错误:0 丢弃:0 过载:0 帧数:0

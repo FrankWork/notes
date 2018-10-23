@@ -3,6 +3,12 @@ https://blog.csdn.net/tietao/article/details/6862341
 
 字体大小：xshell客户端 菜单栏->文件->属性->外观
 
+## vim安装与配置
+
+$ yum install vim-enhanced
+$ vim /etc/bashrc
+	alias vi='vim'
+
 用户自定义配置文件：~/.vimrc
 配置文件
 	~/.vimrc
@@ -14,20 +20,21 @@ https://blog.csdn.net/tietao/article/details/6862341
 设置 :set
 
 :set nu 			" 显示行号
-:set nonu			" 取消显示行号
+" :set nonu			" 取消显示行号
 :set tabstop=4		" tab空格数
 :set shiftwidth=4	" 自动缩进时，缩进的空格数
 :set smartindent   	" 开启新行时智能缩进
 :set wrap			" 折叠过长文本
-:set nowrap			" 取消折叠
-:set invlist		" 显示特殊字符
-:set list			" 显示特殊字符
+" :set nowrap			" 取消折叠
+" :set invlist		" 显示特殊字符
+" :set list			" 显示特殊字符
 :set nolist			" 取消显示特殊字符
 :set hlsearch   	" 搜索时高亮显示被找到的文本
 :set sm				" 显示匹配的括号
 :set cursorline		" 高亮显示当前行
 :set textwidth=79	" 自动折叠的文本最大长度
 :set nobackup		" 不自动备份
+syntax on
 
 语法折叠
 :set foldmethod=syntax " 语法折叠
@@ -35,13 +42,7 @@ https://blog.csdn.net/tietao/article/details/6862341
 	zo 打开折叠； 
 	za 打开/关闭折叠互相切换
 
-函数跳转
-	sudo apt-get install exuberant-ctags
-	ctags -R .
-	将光标移到想要跳转的函数或变量上，通过快捷键 " CTRL + ] "即可快速跳转，
-	通过快捷键“ CTRL + T ”，回到跳转之前的位置
-
-
+## 编辑
 
 复制操作
 　　yy  复制当前整行
@@ -88,3 +89,14 @@ https://blog.csdn.net/tietao/article/details/6862341
 
 二进制编辑
 	vim -b file
+
+
+## 代码阅读 CTags + TagList
+
+https://blog.csdn.net/leopard21/article/details/40402515
+
+函数跳转
+	sudo apt-get install exuberant-ctags
+	ctags -R .
+	将光标移到想要跳转的函数或变量上，通过快捷键 " CTRL + ] "即可快速跳转，
+	通过快捷键“ CTRL + T ”，回到跳转之前的位置
