@@ -5,10 +5,18 @@ https://blog.csdn.net/tietao/article/details/6862341
 
 ## vim安装与配置
 
+```bash
 $ yum install vim-enhanced
 $ vim /etc/bashrc
 	alias vi='vim'
 
+$ yum install gcc-c++ ncurses-devel python-devel
+$ git clone https://github.com/vim/vim.git
+$ cd vim/src
+$ ./configure --enable-multibyte --enable-pythoninterp=yes
+$ make && make install 
+$ vim --version # log out and log in to refresh
+```
 用户自定义配置文件：~/.vimrc
 配置文件
 	~/.vimrc
@@ -34,6 +42,9 @@ $ vim /etc/bashrc
 :set cursorline		" 高亮显示当前行
 :set textwidth=79	" 自动折叠的文本最大长度
 :set nobackup		" 不自动备份
+:set ruler			" 显示当前位置
+":set paste			" 防止起始行为注释时，自动注释到后面几行；原本意思为粘贴时保持原样，和自动缩进冲突
+
 syntax on
 
 语法折叠
@@ -86,17 +97,110 @@ syntax on
 	:1 跳到文件头
 	:$ 跳到文件尾
 
+历史记录
+	输入`:`，然后用上下箭头
+	:history
 
 二进制编辑
 	vim -b file
 
+## 插件管理 Vundle
 
-## 代码阅读 CTags + TagList
+https://juejin.im/post/5a38c37f6fb9a0450909a151
+
+```bash
+$ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+$ vi ~/.vimrc
+```
+```vimscript
+set nocompatible               " be iMproved, required
+filetype off                   " required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'		" 插件管理
+Plugin 'scrooloose/nerdtree' 	" 目录树
+Plugin 'majutsushi/tagbar'		" 代码导航
+
+call vundle#end()              " required
+filetype plugin indent on      " required
+
+"打开文件夹时，自动打开NERDTree窗口
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+map <F2> :NERDTreeToggle<CR>	" F2打开NERDTree窗口
+
+let g:tagbar_left = 1
+nmap <F3> :TagbarToggle<CR>		" F3打开TagBar窗口
+```
+打开vim运行:PluginInstall，就可以安装好配置文件中的插件
+
+## 目录管理 NERDTree
+
+`CTRL+WW`在左右两侧窗口跳转，<C+W><C+h/j/k/l>来执行左下上右的跳转
+在目录上按回车，可以打开目录树，再按一下可以关闭目录树
+在文件上按回车，可以进入文件编辑
+
+## 代码补全 YouCompleteMe
+
+不好用，容易卡死
+$ yum install cmake
+$ cd ~/.vim/bundle/YouCompleteMe && python ./install.py
+
+原生补全：<C-x><C-o>触发。<C-n> 和 <C-p> 选择
+
+## 代码导航 CTags + TagList + TagBar
 
 https://blog.csdn.net/leopard21/article/details/40402515
 
-函数跳转
-	sudo apt-get install exuberant-ctags
-	ctags -R .
-	将光标移到想要跳转的函数或变量上，通过快捷键 " CTRL + ] "即可快速跳转，
-	通过快捷键“ CTRL + T ”，回到跳转之前的位置
+```bash
+$ yum install ctags
+$ ctags --list-languages
+$ ctags --list-maps
+$ ctags --list-kinds=c++
+$ ctags -R --c++-kinds=+px # 增加分析c++的p和x语法元素
+$ ctags -R # 默认当前目录，递归处理子目录
+```
+在当前目录生成`tags`文件后，用vi打开源代码，
+通过快捷键"CTRL+]"，即可快速跳转到函数定义，
+通过快捷键"CTRL+T"，回到跳转之前的位置
+通过快捷键"CTRL+O"，回到最初的位置
+
+安装TagList （弃用）
+```bash
+$ curl -o taglist_46.zip https://www.vim.org/scripts/download_script.php?src_id=19574
+$ mkdir -p ~/.vim
+$ unzip taglist_46.zip -d ~/.vim
+$ vi ~/.vimrc
+" Tlist
+let Tlist_Auto_Open=0 				" don't auto open
+"let Tlist_Use_Left_Window=1		"set taglist window in left
+let Tlist_Auto_Update=1
+let Tlist_File_Fold_Auto_Close=1 	"auto close Tlist when exiting file.
+let Tlist_Exit_OnlyWindow = 1
+nmap <F7> :copen<CR>
+nmap <F6> :cclose<CR>
+nnoremap <silent> <F8> :TlistToggle<CR>
+```
+按F8打开TagList左侧窗口，`CTRL+WW`在左右两侧窗口跳转
+
+# neovim
+
+```bash
+$ yum -y install epel-release
+$ curl -o /etc/yum.repos.d/dperson-neovim-epel-7.repo https://copr.fedorainfracloud.org/coprs/dperson/neovim/repo/epel-7/dperson-neovim-epel-7.repo 
+$ yum -y install neovim
+$ vim /etc/bashrc
+	alias vi='vim'
+$ mkdir -p .config/nvim
+$ vi .config/nvim/init.vim
+set nu 			" 显示行号
+set tabstop=4	" tab空格数
+set shiftwidth=4	" 自动缩进时，缩进的空格数
+set softtabstop=4
+set wrap			" 折叠过长文本
+set cursorline		" 高亮显示当前行
+set textwidth=79	" 自动折叠的文本最大长度
+set nobackup		" 不自动备份
+set ruler			" 显示当前位置
+```
