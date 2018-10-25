@@ -1,3 +1,9 @@
+# python
+
+pip3 install http://download.pytorch.org/whl/cpu/torch-0.4.1-cp36-cp36m-linux_x86_64.whl
+
+# c++
+
 https://pytorch.org/cppdocs
 
 https://pytorch.org/cppdocs/installing.html

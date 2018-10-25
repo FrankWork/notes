@@ -1,4 +1,7 @@
 # install on centos 
+
+## 编译
+
 PREFIX=$HOME/bin
 mkdir -p PREFIX
 
@@ -9,6 +12,18 @@ cd Python-3.6.0/
 make
 make test
 make install
+
+
+## yum
+
+yum install https://centos7.iuscommunity.org/ius-release.rpm
+yum install python36u
+ln -s /bin/python3.6 /bin/python3
+yum install python36u-pip
+ln -s /bin/pip3.6 /bin/pip3
+
+
+
 
 # install Pip
 wget https://bootstrap.pypa.io/get-pip.py

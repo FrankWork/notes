@@ -53,17 +53,18 @@ syntax on
 	zo 打开折叠； 
 	za 打开/关闭折叠互相切换
 
+## 跳转
+
+^或0		行首	
+$		 行尾
+
 ## 编辑
 
-复制操作
+复制
 　　yy  复制当前整行
 　　yw  复制一个字
 　　#yy 复制#行
 　　#yw 复制#个单词
-查找
-	/patern  向后找 n N
-	?pattern 向前找 n N 查找下一个
-
 粘贴
 	vim有12个粘贴板，分别是0、1、2、...、9、a、"、+；
 	:reg "N 命令可以查看各个粘贴板里的内容。
@@ -72,12 +73,25 @@ syntax on
 	"Ny   "Np  粘贴板为 N, 0<=N<=9
 	"+y   "+p   系统粘贴板
 
-删除
+删除(剪切)
+	dd	删除整行
 	d$	删除到行尾
-
 回退
-	u   撤销上一步的操作
-
+	u   	撤销上一步的操作
+	ctrl+r	恢复被撤销的操作
+缩进
+	>> 缩进
+	<< 回缩
+	:10,100>	第10行至第100行缩进
+	:20,80<		第20行至第80行反缩进
+多行缩进
+	1 //在这里按下'v'进入选择模式
+	1
+	1
+	1//光标移动到这里，再按一次大于号'>'缩进一次，按'6>'缩进六次，按'<'回缩。以下同理	
+多行编辑
+	选定区域：将光标移到要编辑的开始位置，按CTRL+V进入visual block模式，将光标移到编辑块的最后位置
+	编辑：   按i或I编辑一行，按esc退出编辑模式，vi自动扩展到多行
 正则表达式
 	\/ 	匹配 / 字符。
 	\\ 	匹配 \ 字符。
@@ -89,6 +103,10 @@ syntax on
 
 	\v[\u4e00-\u9fa5]+ " 查找中文
 	[\u4e00-\u9fa5]\+  " 默认为magic, `+`需要加反斜杠
+
+查找
+	/patern  向后找 n N
+	?pattern 向前找 n N 查找下一个
 
 替换
 	:%s/old_text/new_text/g
@@ -132,6 +150,7 @@ map <F2> :NERDTreeToggle<CR>	" F2打开NERDTree窗口
 
 let g:tagbar_left = 1
 nmap <F3> :TagbarToggle<CR>		" F3打开TagBar窗口
+
 ```
 打开vim运行:PluginInstall，就可以安装好配置文件中的插件
 
@@ -141,13 +160,16 @@ nmap <F3> :TagbarToggle<CR>		" F3打开TagBar窗口
 在目录上按回车，可以打开目录树，再按一下可以关闭目录树
 在文件上按回车，可以进入文件编辑
 
-## 代码补全 YouCompleteMe
+## 代码补全 
 
-不好用，容易卡死
-$ yum install cmake
-$ cd ~/.vim/bundle/YouCompleteMe && python ./install.py
+- 原生补全：<C-x><C-o>触发。<C-n> 和 <C-p> 选择
+- YouCompleteMe
+	不好用，容易卡死
+	$ yum install cmake
+	$ cd ~/.vim/bundle/YouCompleteMe && python ./install.py
+- Python补全
 
-原生补全：<C-x><C-o>触发。<C-n> 和 <C-p> 选择
+
 
 ## 代码导航 CTags + TagList + TagBar
 
