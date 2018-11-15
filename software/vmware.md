@@ -14,6 +14,8 @@ https://blog.csdn.net/qq_28090573/article/details/78730552
     适用情况：在局域网中有1个以上的IP地址可以自由分配使用。
     https://blog.csdn.net/qq_28817739/article/details/77604505
     虚拟机的子网掩码，默认网关，DNS服务器要和本地主机的一样，虚拟机的ip地址要和本地ip地址在一个网段
+	可以将虚拟机网络设置为dhcp，然后使用该虚拟机的ip地址通过ssh连接
+
 2.  NAT 
     https://blog.csdn.net/jiuduan2009/article/details/51737004
 
