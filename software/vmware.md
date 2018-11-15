@@ -15,6 +15,8 @@ https://blog.csdn.net/qq_28090573/article/details/78730552
     https://blog.csdn.net/qq_28817739/article/details/77604505
     虚拟机的子网掩码，默认网关，DNS服务器要和本地主机的一样，虚拟机的ip地址要和本地ip地址在一个网段
 2.  NAT 
+    https://blog.csdn.net/jiuduan2009/article/details/51737004
+
     让虚拟系统借助NAT(网络地址转换)功能，通过宿主机器所在的网络来访问公网, 无法和本局域网中的其他真实主机进行通讯，宿主机器和虚拟机可以双向通信
     需要在本地操作系统将本地网卡共享给VMnet8(NAT模式用的虚拟交换机)
     适用情况：只有1 个外网的IP地址可以使用

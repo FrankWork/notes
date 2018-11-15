@@ -12,6 +12,42 @@ $ ip addr
 $ ip addr show 
 $ ip addr show ens33 # ens33为网卡设备
 
+# 网络配置
+
+配置本地静态ip
+
+$ vi /etc/sysconfig/network-scripts/ifcfg-ens33
+        DEVICE=eth0
+        TYPE=Ethernet
+        ONBOOT=yes
+        BOOTPROTO=static
+        IPADDR=192.168.148.1   #注意虚拟机的IP与宿主机的内网IP不能相同
+        NETMASK=255.255.255.0
+        GATEWAY=192.168.148.2
+        DNS1=202.118.1.29
+        DNS2=202.118.1.53
+
+配置本地动态ip
+
+$ vi /etc/sysconfig/network-scripts/ifcfg-ens33
+	BOOTPROTO=dhcp
+
+
+
+$ service network restart
+
+
+
+# 计算机网络
+
+
+分组交换
+   背景：战争期间，一旦正在通信的电路有一个交换机或链路被炸，则整个通信电路就要中断
+
+	
+网关：
+
+
 
 # 其他
 
