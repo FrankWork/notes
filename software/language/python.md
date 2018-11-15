@@ -58,6 +58,8 @@ if __name__ == '__main__':	主程序
 	test()
 
 
+# pdb debug
+
 
 
 
