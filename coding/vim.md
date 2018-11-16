@@ -48,7 +48,7 @@ $ vim --version # log out and log in to refresh
 syntax on
 
 语法折叠
-:set foldmethod=syntax " 语法折叠
+:set foldmethod=syntax " 语法折叠"
 	zc 关闭折叠； 
 	zo 打开折叠； 
 	za 打开/关闭折叠互相切换
@@ -71,7 +71,7 @@ $		 行尾
 	
 	y     p    粘贴板为 "
 	"Ny   "Np  粘贴板为 N, 0<=N<=9
-	"+y   "+p   系统粘贴板
+	"+y   "+p   系统粘贴板"
 
 删除(剪切)
 	dd	删除整行
@@ -93,7 +93,7 @@ $		 行尾
 	选定区域：将光标移到要编辑的开始位置，按CTRL+V进入visual block模式，将光标移到编辑块的最后位置
 	编辑：   按i或I编辑一行，按esc退出编辑模式，vi自动扩展到多行
 多行复制
-	: 6,9 co 12  "第6行到第9行复制到第12行
+	: 6,9 co 12  "第6行到第9行复制到第12行"
 多行剪切
 	: 6,9 m 12
 多行删除
@@ -108,7 +108,7 @@ $		 行尾
     \V: very nomagic	任何字体都需要加反斜杠
 
 	\v[\u4e00-\u9fa5]+ " 查找中文
-	[\u4e00-\u9fa5]\+  " 默认为magic, `+`需要加反斜杠
+	[\u4e00-\u9fa5]\+  " 默认为magic, `+`需要加反斜杠"
 
 查找
 	/patern  向后找 n N
@@ -116,7 +116,7 @@ $		 行尾
 
 替换
 	:%s/old_text/new_text/g
-    :%s/  /\t/g   "两个空格替换为一个tab
+    :%s/  /\t/g   "两个空格替换为一个tab"
 跳转
 	:1 跳到文件头
 	:$ 跳到文件尾
@@ -149,13 +149,13 @@ Plugin 'majutsushi/tagbar'		" 代码导航
 call vundle#end()              " required
 filetype plugin indent on      " required
 
-"打开文件夹时，自动打开NERDTree窗口
+"打开文件夹时，自动打开NERDTree窗口"
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 map <F2> :NERDTreeToggle<CR>	" F2打开NERDTree窗口
 
 let g:tagbar_left = 1
-nmap <F3> :TagbarToggle<CR>		" F3打开TagBar窗口
+nmap <F3> :TagbarToggle<CR>		"F3打开TagBar窗口，依赖ctags程序"
 
 ```
 打开vim运行:PluginInstall，就可以安装好配置文件中的插件
@@ -202,12 +202,12 @@ $ ctags -R # 默认当前目录，递归处理子目录
 通过快捷键"CTRL+O"，回到最初的位置
 
 安装TagList （弃用）
-```bash
+```
 $ curl -o taglist_46.zip https://www.vim.org/scripts/download_script.php?src_id=19574
 $ mkdir -p ~/.vim
 $ unzip taglist_46.zip -d ~/.vim
 $ vi ~/.vimrc
-" Tlist
+" Tlist                             "
 let Tlist_Auto_Open=0 				" don't auto open
 "let Tlist_Use_Left_Window=1		"set taglist window in left
 let Tlist_Auto_Update=1
