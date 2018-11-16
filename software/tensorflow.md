@@ -2,6 +2,47 @@
 https://github.com/tensorflow/tensorflow/blob/master/tensorflow/g3doc/get_started/os_setup.md
 https://www.tensorflow.org/
 
+# install tensorflow 1.12 from src
+
+## java && jdk
+
+$ mkdir -p ~/local
+$ tar zxvf jdk-8u191-linux-x64.tar.gz
+$ vi ~/.bashrc
+export JAVA_HOME="${HOME}/local/jdk1.8.0_191"
+export PATH="$JAVA_HOME/bin:$PATH"
+$ source ~/.bashrc && java -version
+
+## bazel
+
+$ wget https://github.com/bazelbuild/bazel/releases/download/0.19.1/bazel-0.19.1-dist.zip
+$ unzip bazel-<VERSION>-dist.zip -d bazel-<Version> # 解压到文件夹中
+$ cd bazel-<Version> &&  bash ./compile.sh # 需要JDK
+$ export PATH="${HOME}/local/bazel-0.19.1/output:$PATH"
+
+## cuda 9 + cudnn 7
+
+$ sh cuda_9.0.176_384.81_linux.run # 只安装编译时需要的动态链接库，可以不安装驱动
+$ cp cudnn7/include/cudnn.h cuda-9.0/include
+$ cp cudnn7/lib64/* cuda-9.0/lib64/
+$ chmod a+r cuda-9.0/lib64/libcudnn*
+$ chmod a+r cuda-9.0/include/cudnn.h 
+
+## fetch libs
+
+
+$ wget https://github.com/tensorflow/tensorflow/archive/v1.12.0.tar.gz
+$ tar zxvf v1.12.0.tar.gz
+$ cd tensorflow-1.12.0/
+$ ./configure
+
+online 
+$ mkdir /tmp/tf_deps
+$ bazel --output_user_root=/tmp/tf_deps fetch --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
+
+
+$ bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
+
 
 
 # pip install 
