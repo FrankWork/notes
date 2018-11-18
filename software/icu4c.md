@@ -1,3 +1,6 @@
+国际化
+International Component for Unicode
+
 ```
 wget http://download.icu-project.org/files/icu4c/60.2/icu4c-60_2-Fedora27-x64.tgz
 ```
