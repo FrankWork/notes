@@ -1,4 +1,6 @@
 ```bash
+$ ld # 将目标文件链接为可执行文件
+
 $ ldd example
 	linux-vdso.so.1 =>  (0x00007fff05dfe000)
 	libyaml-cpp.so.0.6 => /home/liuzhihui/bin/yaml-cpp/lib/libyaml-cpp.so.0.6 (0x00007f84f16bb000)
