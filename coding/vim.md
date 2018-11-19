@@ -145,6 +145,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'		" 插件管理
 Plugin 'scrooloose/nerdtree' 	" 目录树
 Plugin 'majutsushi/tagbar'		" 代码导航
+Plugin 'terryma/vim-multiple-cursors' "多光标编辑
 
 call vundle#end()              " required
 filetype plugin indent on      " required
@@ -155,7 +156,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 map <F2> :NERDTreeToggle<CR>	" F2打开NERDTree窗口
 
 let g:tagbar_left = 1
-nmap <F3> :TagbarToggle<CR>		"F3打开TagBar窗口，依赖ctags程序"
+nmap <F3> :TagbarToggle<CR>		"F3打开TagBar窗口，依赖ctags程序
 
 ```
 打开vim运行:PluginInstall，就可以安装好配置文件中的插件
@@ -181,12 +182,24 @@ m	文件系统菜单(添加、删除、移动）
 
 ## 代码补全 
 
-- 原生补全：<C-x><C-o>触发。<C-n> 和 <C-p> 选择
+- 原生补全：
+	<C-x><C-o>触发。<C-n> 和 <C-p> 选择
+	<C-p> 自动补全文件中能找到的字符串
+
 - YouCompleteMe
 	不好用，容易卡死
 	$ yum install cmake
 	$ cd ~/.vim/bundle/YouCompleteMe && python ./install.py
-- Python补全
+
+## 多光标编辑 vim-multiple-cursors
+
+a, b, c,
+
+ v 进入visual mode
+ <C-n> 选择
+ <C-n> 选择下一个 。。。
+ I或A编辑
+ <Esc> 退出编辑
 
 
 
