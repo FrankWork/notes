@@ -1,4 +1,4 @@
-# install
+## install
 
 wget https://cmake.org/files/v3.11/cmake-3.11.4.tar.gz
 tar zxvf cmake-3.11.4.tar.gz
@@ -9,7 +9,7 @@ cd cmake-3.11.4
 gmake  
 gmake install
 
-# basic
+## basic
 
 main.cpp
 
@@ -36,7 +36,7 @@ $ cmake .
 $ make
 ```
 
-# add lib
+## add lib
 
 CMakeLists.txt
 ```cmake
@@ -57,4 +57,23 @@ ADD_EXECUTABLE(main ${DIR_SRCS})
 
 # link the libraries to the executable
 target_link_libraries (main yaml-cpp)
+```
+
+## 编译安装json-cpp
+
+```bash
+wget https://github.com/open-source-parsers/jsoncpp/archive/1.8.4.tar.gz
+tar zxvf 1.8.4.tar.gz
+cd jsoncpp-1.8.4
+mkdir -p build/release
+cd build/release
+cmake -DCMAKE_BUILD_TYPE=release \
+	-DBUILD_STATIC_LIBS=OFF \
+	-DBUILD_SHARED_LIBS=ON \
+	-DCMAKE_INSTALL_PREFIX=${HOME}/local \
+	-G "Unix Makefiles" \
+	../..
+make
+make install
+#
 ```
