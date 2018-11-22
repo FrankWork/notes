@@ -1,3 +1,21 @@
+
+
+## install by release tarball
+
+- libevent 2.x
+
+- ncurses
+
+wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz -O tmux-2.8.tar.gz
+cd tmux-2.8
+./configure --prefix=${HOME}/local
+make -j8 && make install
+
+
+
+
+install by git
+
 $ git clone https://github.com/tmux/tmux.git
 $ cd tmux
 $ sh autogen.sh
@@ -10,7 +28,7 @@ apt install tmux
 
  tmux所有自带命令都默认需要先按Ctrl + b，然后再键入对应的命令
 
-Ctrl+b " - split pane horizontally
+Ctrl+b " - split pane horizontally"
 Ctrl+b % - 将当前窗格垂直划分
 Ctrl+b 方向键 - 在各窗格间切换
 Ctrl+b，并且不要松开Ctrl，方向键 - 调整窗格大小
