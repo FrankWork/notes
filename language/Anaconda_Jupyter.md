@@ -7,6 +7,16 @@ $ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs
 $ conda config --set show_channel_urls yes
 ```
 
+## install miniconda
+
+```bash
+wget https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-x86_64.sh
+source ~/.bashrc
+conda config --add channels \
+	https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+
+```
+
 ## update
 
 $ conda --version

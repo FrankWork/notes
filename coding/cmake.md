@@ -1,13 +1,15 @@
 ## install
 
+```bash
 wget https://cmake.org/files/v3.11/cmake-3.11.4.tar.gz
 tar zxvf cmake-3.11.4.tar.gz
 cd cmake-3.11.4
 
-./bootstrap --prefix=$HOME
+./bootstrap --prefix=${HOME}/local
 
-gmake  
-gmake install
+make -j10  
+make install
+```
 
 ## basic
 

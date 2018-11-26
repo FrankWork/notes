@@ -3,16 +3,14 @@
 ```bash
 wget https://github.com/open-source-parsers/jsoncpp/archive/1.8.4.tar.gz -O jsoncpp-1.8.4.tar.gz
 tar zxvf jsoncpp-1.8.4.tar.gz
-cd jsoncpp-1.8.4
-mkdir -p build/release
-cd build/release
+cd jsoncpp-1.8.4 && mkdir -p build && cd build
 cmake -DCMAKE_BUILD_TYPE=release \
-	-DBUILD_STATIC_LIBS=OFF \
 	-DBUILD_SHARED_LIBS=ON \
 	-DCMAKE_INSTALL_PREFIX=${HOME}/local \
 	-G "Unix Makefiles" \
-	../..
-make
+	..
+
+make -j10
 make install
 #
 #程序运行时的动态库加载路径
@@ -27,13 +25,12 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${HOME}/local/lib64"
 ```bash
 wget https://github.com/gflags/gflags/archive/v2.2.2.tar.gz -O gflags-2.2.2.tar.gz
 tar zxvf gflags-2.2.2.tar.gz
-cd gflags-2.2.2
-mkdir build && cd build
+cd gflags-2.2.2 && mkdir build && cd build
 cmake -DBUILD_SHARED_LIBS=ON \
     -DCMAKE_INSTALL_PREFIX=${HOME}/local \
     ..  
             
-make
+make -j10
 make install
 
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${HOME}/local/lib"
@@ -67,9 +64,30 @@ or configure CXXFLAGS="$(pkg-config --cflags protobuf)" \
 ```bash
 git clone https://github.com/google/sentencepiece.git
 cd sentencepiece
-mkdir build && cd build
+mkdir -p build && cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=${HOME}/local
 make -j10
 make install
-ldconfig -v
+#ldconfig -v
+export PATH=${PATH}:${HOME}/local/bin
 ```
+
+
+## OpenCC
+
+```bash
+wget https://github.com/BYVoid/OpenCC/archive/ver.1.0.5.tar.gz -O opencc-1.0.5.tar.gz
+tar zxvf opencc-1.0.5.tar.gz
+cd OpenCC-ver.1.0.5/
+mkdir -p build/ && cd build 
+cmake \
+	-DENABLE_GTEST:BOOL=OFF \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX=${HOME}/local \
+	..
+make -j10
+make install
+
+```
+opencc -i input.txt -o output.txt -c ~/local/share/opencc/t2s.json
+

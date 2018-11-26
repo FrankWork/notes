@@ -1,13 +1,8 @@
-# Linux CPU
-pip install paddlepaddle
-# Linux GPU cuda9cudnn7
-pip install paddlepaddle-gpu
-# Linux GPU cuda8cudnn7
-pip install paddlepaddle-gpu==0.14.0.post87
-# Linux GPU cuda8cudnn5
-pip install paddlepaddle-gpu==0.14.0.post85
+python 2.7, python 3.5
 
-# For installation on other platform, refer to http://paddlepaddle.org/
+```bash
+pip2 install paddlepaddle # linux cpu
+```
 
 
 
@@ -19,13 +14,13 @@ source deactivate
 
 ## paddle C++ 预测库
 
+编译需要外网，还特别慢
+
 ```bash
-PADDLE_ROOT=/path/of/capi
 git clone https://github.com/PaddlePaddle/Paddle.git
 cd Paddle
-mkdir build
-cd build
-cmake -DFLUID_INFERENCE_INSTALL_DIR=$PADDLE_ROOT \
+mkdir -p build && cd build
+cmake -DFLUID_INFERENCE_INSTALL_DIR=${HOME}/local \
       -DCMAKE_BUILD_TYPE=Release \
       -DWITH_FLUID_ONLY=ON \
       -DWITH_SWIG_PY=OFF \
@@ -34,7 +29,8 @@ cmake -DFLUID_INFERENCE_INSTALL_DIR=$PADDLE_ROOT \
       -DWITH_GPU=OFF  \
       -DON_INFER=ON \
       ..
-make
+
+make -j16
 make inference_lib_dist
 
 

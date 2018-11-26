@@ -24,6 +24,7 @@ zip查看包内文件：
 
 .tar.gz 和 .tgz
 解压：tar zxvf FileName.tar.gz
+	  tar zxvf FileName.tar.gz -C DirName # 到指定文件夹，该文件夹得存在
 压缩：tar zcvf FileName.tar.gz DirName
 ———————————————
 .bz2
