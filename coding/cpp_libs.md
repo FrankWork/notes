@@ -42,7 +42,8 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${HOME}/local/lib"
 
 ```bash
 sudo apt-get install autoconf automake libtool curl make g++ unzip
-wget https://github.com/google/protobuf/releases/download/v3.5.1/protobuf-cpp-3.5.1.tar.gz
+
+wget https://github.com/protocolbuffers/protobuf/releases/download/v3.5.1/protobuf-cpp-3.5.1.tar.gz
 wget https://github.com/protocolbuffers/protobuf/releases/download/v3.6.1/protobuf-cpp-3.6.1.tar.gz
 tar zxvf protobuf-cpp-3.6.1.tar.gz && cd protobuf-3.6.1/
 ./configure --prefix=${HOME}/local
@@ -51,6 +52,10 @@ make install
 
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${HOME}/local/lib"
 #sudo ldconfig # refresh shared library cache.
+export LIBRARY_PATH=${LIBRARY_PATH}:${HOME}/local/lib
+
+export C_INCLUDE_PATH=${C_INCLUDE_PATH}:${HOME}/local/include
+export CPLUS_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}:${HOME}/local/include
 ```
 
 c++ my_program.cc my_proto.pb.cc `pkg-config --cflags --libs protobuf`

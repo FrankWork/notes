@@ -7,6 +7,11 @@ sudo -H pip uninstall xxx
 
 export tuna="https://pypi.tuna.tsinghua.edu.cn/simple"
 pip install -i $tuna some-package
+
+pip install pip -U
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
+
 vim ~/.config/pip/pip.conf
 [global]
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple
