@@ -4,6 +4,7 @@ sudo apt-get install ssh
 # config
 
 /etc/ssh/sshd_config
+sudo service ssh restart
 
 # usage: 
 
