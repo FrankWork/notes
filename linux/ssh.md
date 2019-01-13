@@ -30,8 +30,19 @@ you@remote: $ chmod 700 .ssh
 $ nohup program &
 $ nohup ./hierarchy-phrase.sh &
 
+# xshell连接windows subsystem for linux
 
+```bash
+$ sudo apt remove openssh-server
+$ sudo apt install openssh-server
 
+$ sudo vi /etc/ssh/sshd_config
+Port 2222  #默认的是22，但是windows有自己的ssh服务，也是监听的22端口，所以这里要改一下
+UsePrivilegeSeparation no
+PasswordAuthentication yes
+
+$ sudo service ssh restart
+```
 
 # SSH命令行上传/下载文件
 
