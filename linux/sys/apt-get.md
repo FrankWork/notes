@@ -1,3 +1,4 @@
+```bash
 apt-cache search package 搜索软件包
 apt-cache show package  获取包的相关信息，如说明、大小、版本等
 sudo apt-get install package 安装包
@@ -15,6 +16,7 @@ apt-get source package  下载该包的源代码
 sudo apt-get clean && sudo apt-get autoclean 清理无用的包
 sudo apt-get autoremove 自动卸载
 sudo apt-get check 检查是否有损坏的依赖
+```
 
 # 强制解锁
 sudo rm /var/cache/apt/archives/lock
@@ -55,6 +57,26 @@ deb	  http://mirrors.163.com/debian/    wheezy     main non-free contrib
 		deb http://mirror.neu.edu.cn/ubuntu/ xenial-backports main multiverse restricted universe
 		deb http://mirror.neu.edu.cn/ubuntu/ xenial-security main multiverse restricted universe
 		deb http://mirror.neu.edu.cn/ubuntu/ xenial-updates main multiverse restricted universe
+		
+## ubuntu 18.04 清华源
+
+```bash
+$ sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+$ sudo vi /etc/apt/sources.list
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+$ sudo apt update
+$ sudo apt upgrade
+```
+
 # 更新软件
 
 ## 更新软件源
