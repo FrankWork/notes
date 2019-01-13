@@ -161,6 +161,49 @@ nmap <F3> :TagbarToggle<CR>		"F3打开TagBar窗口，依赖ctags程序
 ```
 打开vim运行:PluginInstall，就可以安装好配置文件中的插件
 
+## 插件管理 vim-plug
+
+```vimscript
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
+endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/vim-easy-align'
+Plug 'scrooloose/nerdtree'		" 目录树
+Plug 'majutsushi/tagbar'		" 代码导航
+Plug 'terryma/vim-multiple-cursors'	"多光标编辑
+
+" Initialize plugin system
+call plug#end()
+
+"打开文件夹时，自动打开NERDTree窗口"
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+map <F2> :NERDTreeToggle<CR>	" F2打开NERDTree窗口
+
+let g:tagbar_left = 1
+nmap <F3> :TagbarToggle<CR>	"F3打开TagBar窗口，依赖ctags程序
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+```
+打开vim运行:PlugInstall，就可以安装好配置文件中的插件
+
+## 自动对齐 vim-easy-align
+
+用=对齐文本，有以下两种方法
+- vipga=
+- gaip=
+
+https://github.com/junegunn/vim-easy-align
+
 ## 目录管理 NERDTree
 
 `CTRL+WW`在左右两侧窗口跳转，<C+W><C+h/j/k/l>来执行左下上右的跳转
