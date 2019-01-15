@@ -41,7 +41,8 @@ Port 2222  #默认的是22，但是windows有自己的ssh服务，也是监听�
 UsePrivilegeSeparation no
 PasswordAuthentication yes
 
-$ sudo service ssh restart
+$ sudo service ssh start
+$ sudo update-rc.d ssh defaults # 开机启动
 ```
 
 # SSH命令行上传/下载文件
