@@ -87,10 +87,12 @@ $ sudo /etc/init.d/mysql start
 
 创建表：
 
+```
 CREATE DATABASE IF NOT EXISTS db_name DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 GRANT ALL PRIVILEGES ON wikidb.* TO 'wikiuser'@'localhost' 
 IDENTIFIED BY 'password';
+
 
 创建用户：
 MariaDB [(none)]> show databases;
@@ -109,7 +111,7 @@ MariaDB [mysql]> select Host, User, Password from user;
 | localhost | drupal           | *87C2D16387BBF6BAD8B735C3BF31B4802B68E3FB |
 +-----------+------------------+-------------------------------------------+
 6 rows in set (0.00 sec)
-
+```
 
 
 
@@ -153,6 +155,7 @@ VALUES
 DELETE FROM table_name;
 
 select count(*) from tb_name;
+select distinct col_name from tb_name;
 
 SELECT uuid FROM news_tb WHERE uuid in ("fff", "679");
 

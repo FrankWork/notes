@@ -44,7 +44,8 @@ $ vim --version # log out and log in to refresh
 :set nobackup		" 不自动备份
 :set ruler			" 显示当前位置
 ":set paste			" 防止起始行为注释时，自动注释到后面几行；原本意思为粘贴时保持原样，和自动缩进冲突
-
+:set fenc"文件编码 
+:set fileencoding"文件编码
 syntax on
 
 语法折叠
@@ -98,6 +99,12 @@ $		 行尾
 	: 6,9 m 12
 多行删除
 	: 6,9 de
+多文件编辑
+    vim file1 file2 ... filen
+    :open file
+    :bn—下一个文件
+    :bp—上一个文件
+
 正则表达式
 	\/ 	匹配 / 字符。
 	\\ 	匹配 \ 字符。
@@ -109,6 +116,11 @@ $		 行尾
 
 	\v[\u4e00-\u9fa5]+ " 查找中文"
 	[\u4e00-\u9fa5]\+  " 默认为magic, `+`需要加反斜杠"
+
+特殊字符
+    ^M windows下换行符, 替换 :%s/^M//g
+    按Ctrl+V+M输入^M
+    空格替换为换行 :%s/ /\r/g
 
 查找
 	/patern  向后找 n N

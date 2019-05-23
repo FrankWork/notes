@@ -114,7 +114,17 @@ $ git fetch --recurse-submodules origin master
 	git push -u origin master第一次推送master分支的所有内容；
 	git push origin master推送最新修改；
 
-# 创建分支
+## git log
+
+git log --pretty=oneline --graph
+git log --abbrev-commit --pretty=oneline --graph
+
+# 本地master与远程master同步
+git pull --rebase
+
+
+
+## 创建分支
 创建并切换到新分支
 $ git checkout -b iss53
 这相当于执行下面这两条命令：
@@ -133,6 +143,18 @@ $ git branch -r
   origin/baseline
   origin/master
 $ git checkout baseline
+更新到分支
+git push origin [branch-name]:refs/for/[branch-name]
+
+把master内容更新到分支
+#git checkout master
+#git fetch upstream
+#
+#git checkout branch-1
+#git merge master 合并master到分支(当前分支与master同步)
+#git push....
+
+
 
 `git pull origin other-branch` is equal to `git fetch origin other-branch && git merge other-branch`
 
@@ -147,6 +169,56 @@ $ git merge upstream/master
 $ git push origin master
 ```
 
+## 代码撤销、回滚
+
+撤销：未进行git push前的所有操作，都是在“本地仓库”中执行的。我们暂且将“本地仓库”的代码还原操作叫做“撤销”
+回滚: 已进行git push，即已推送到“远程仓库”中。我们将已被提交到“远程仓库”的代码还原操作叫做“回滚”
+
+git reset、git checkout和git revert
+git stash: 代码写了一部分，需要切换到另一分支，但不想为当前工作创建一次提交
+git commit --amend 修改最后一次提交
+
+HEAD	上一次提交的快照，下一次提交的父结点
+Index	预期的下一次提交的快照–“暂存区域”，运行git add后，代码就进入“暂存区域”
+Working Directory	沙盒
+
+重置
+
+将当前的分支重设（reset）到指定的<commit>或者HEAD（默认是HEAD，即最新的一次提交），并且根据[mode]有可能更新index和working directory（默认是mixed）
+
+git reset [--hard|soft|mixed|merge|keep] [commit|HEAD]
+ 
+ –hard：重设index和working directory，从<commit>以来在working directory中的任何改变都被丢弃，并把HEAD指向<commit>。彻底回退到某个版本，本地的源码也会变为上一个版本的内容。 
+
+ –soft：index和working directory中的内容不作任何改变，仅仅把HEAD指向<commit>。自从<commit>以来的所有改变都会显示在git status的“Changes to be committed”中。回退到某个版本，只回退了commit的信息。如果还要提交，直接commit即可。
+
+–mixed：仅重设index，但是不重设working directory。这个模式是默认模式，即当不显示告知git reset模式时，会使用mixed模式。这个模式的效果是，working directory中文件的修改都会被保留，不会丢弃，但是也不会被标记成“Changes to be committed”，但是会打出什么还未被更新的报告
+
+回退add操作
+	$ git add test
+	$ git reset HEAD test
+回退最后一次提交
+	$ git add test
+	$ git commit -m"Add test"
+	$ git reset --soft HEAD^
+回退最近几次提交，并把这几次提交放到新分支上
+	$ git branch topic #已当前分支为基础，新建分支topic
+	$ git reset --hard HEAD~2 #在当前分支上回滚提交
+	$ git checkout topic
+	说明：通过临时分支来保留提交，然后在当前分支上做硬回滚。 
+将本地的状态回退到和远程一样
+	$ git reset --hard origin/devlop
+回退到某个版本提交
+	$ git reset 497e350
+	497e350为某commitID。当前HEAD会指向497e350，在497e350其之后提交的内容会被回退到初始状态。 
+要想在develop分支，但错误地提交到了maser分支
+	git checkout master
+	git add .
+	git commit -m"..."
+	git reset --mixed HEAD~1
+	git stash
+	git checkout develop
+	git stash pop
 
 # 撤销branch合并
 

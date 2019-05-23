@@ -1,15 +1,17 @@
 ## install shadowsocks-go
 
+wget https://github.com/shadowsocks/shadowsocks-go/releases/download/1.2.1/shadowsocks-server.tar.gz
+
 ```
 mkdir -p ~/bin/socks/
 go get github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-server 	# on server
 go get github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-local 	# on client
 
-cd $GOROOT/src/github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-server
+cd $GOPATH/src/github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-server
 go build
 mv shadowsocks-server ~/bin/socks
 
-cd $GOROOT/src/github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-local 
+cd $GOPATH/src/github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-local 
 go build
 mv shadowsocks-local ~/bin/socks
 ```
@@ -74,7 +76,9 @@ $ systemctl status shadowsocks-server
 ### firewall
 
 防火墙开放shadowsocks服务端口(server side):
+
 ```
+sudo apt install firewalld
 $ firewall-cmd --permanent --add-port=8888/tcp
 $ firewall-cmd --reload
 ```
