@@ -140,6 +140,12 @@ $		 行尾
 二进制编辑
 	vim -b file
 
+文件编码
+	encoding: 用于缓冲的文本(你正在编辑的文件)，寄存器，Vim 脚本文件
+	fileencoding: vim写入文件时采用的编码类型。
+	termencoding: 该选项代表输出到客户终端（Term）采用的编码类型。
+
+
 ## 插件管理 Vundle
 
 https://juejin.im/post/5a38c37f6fb9a0450909a151

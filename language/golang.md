@@ -1,4 +1,5 @@
 sudo apt-get install golang-go
+yum install go
 
 go tool tour
 

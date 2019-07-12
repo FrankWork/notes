@@ -5,6 +5,8 @@ $ sqlite3 data.db
 sqlite> .databases
 sqlite> .fullschema
 sqlite> .read ex1.sql
+sqlite> .separator "\t"
+sqlite> .import ex1.tsv tableA
 sqlite> select * from table;
 
 sqlite>.open ex1.db

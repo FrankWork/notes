@@ -5,7 +5,7 @@
 	you@server: $ sudo useradd git
 	you@server: $ passwd git
 ### First create ssh keys on your local machine:
-	you@local: $ ssh-keygen -t rsa
+	you@local: $ ssh-keygen -t rsa -C your-email
 ### copy these keys to the server
 	you@local: $ cat ~/.ssh/id_rsa.pub | ssh git@remote-server "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 	           $chmod 700 ~/.ssh

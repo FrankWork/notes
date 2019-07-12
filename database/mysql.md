@@ -170,7 +170,13 @@ UPDATE 表名 SET 字段名1=值1，[ ，字段名2=值2，…] [ WHERE 条件�
 UPDATE news_tb a, (SELECT uuid FROM news_tb WHERE title LIKE '%发动机%' ) b 
        SET a.label=4 WHERE a.uuid=b.uuid;
 ```
+# 编码
 
+```
+show variables like "%character%";
+set character_set_client=utf8;
+set character_set_results=utf8;
+```
 
 # 模糊查询
 
