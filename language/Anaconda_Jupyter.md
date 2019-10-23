@@ -16,6 +16,12 @@ conda config --add channels \
 	https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 
 ```
+## Jupyter
+
+#conda install -c anaconda jupyter
+conda install -c conda-forge jupyterlab
+jupyter notebook
+
 
 ## update
 

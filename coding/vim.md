@@ -21,6 +21,7 @@ $ vim --version # log out and log in to refresh
 配置文件
 	~/.vimrc
 	/etc/vimrc
+	alias vi='vim -u my_vimrc'
 
 帮助
 	:help
@@ -46,6 +47,7 @@ $ vim --version # log out and log in to refresh
 ":set paste			" 防止起始行为注释时，自动注释到后面几行；原本意思为粘贴时保持原样，和自动缩进冲突
 :set fenc"文件编码 
 :set fileencoding"文件编码
+set nocompatible    " be iMproved, required
 syntax on
 
 语法折叠
@@ -116,6 +118,17 @@ $		 行尾
 
 	\v[\u4e00-\u9fa5]+ " 查找中文"
 	[\u4e00-\u9fa5]\+  " 默认为magic, `+`需要加反斜杠"
+	
+	*	匹配0-任意个
+	\+	匹配1-任意个
+	\?	匹配0-1个
+
+	\w	匹配单词字母，等同于[0-9A-Za-z_]
+	\d	匹配阿拉伯数字，等同于[0-9]
+	\t	匹配<TAB>字符
+	\s	匹配空白字符，等同于[ \t]
+	.	匹配任意一个字符
+
 
 特殊字符
     ^M windows下换行符, 替换 :%s/^M//g

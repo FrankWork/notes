@@ -133,6 +133,8 @@ $ git checkout iss53
 合并分支
 $ git checkout master
 $ git merge iss53
+删除未合并分支
+$ git branch -d branch-name
 删掉已经合并的分支
 $ git branch -d iss53
 $ git push origin --delete <branch_name>

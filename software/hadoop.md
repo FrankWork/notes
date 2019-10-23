@@ -66,4 +66,42 @@ $ bin/hdfs dfs -cat output/*
 $ sbin/stop-dfs.sh
 ```
 
+## hdfs shell
 
+http://hadoop.apache.org/docs/r1.0.4/cn/hdfs_shell.html
+
+```
+查看文件
+hadoop fs -ls url
+cat文件到本地
+hadoop fs -cat url > output
+查看文件夹大小
+hadoop fs -dus url
+新建文件夹
+hadoop fs -mkdir /test
+删除文件夹
+hadoop fs -rmr dir
+本地文件复制到目标文件
+hadoop fs -put localfile /user/hadoop/hadoopfile
+hadoop fs -put localfile1 localfile2 /user/hadoop/hadoopdir
+hadoop fs -put localfile hdfs://host:port/hadoop/hadoopfile
+hadoop fs -put - hdfs://host:port/hadoop/hadoopfile
+
+用户合并一个文件夹下面的所有文件至一个本地文件中
+hadoop fs -getmerge <src> <localdst> [addnl]
+
+跨集群ugi拷贝文件
+hadoop distcp -su user,passwd -du user,passwd src dist
+
+
+hadoop job -list
+hadoop job -kill job_201212111628_11166
+```
+
+## hive
+
+    INSERT OVERWRITE DIRECTORY
+    '${HDFS_FILE_PRE}/${day}'
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+
+	select * from 

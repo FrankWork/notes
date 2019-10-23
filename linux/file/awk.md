@@ -66,3 +66,14 @@ awk 'BEGIN{FS=OFS="\t"}NR==FNR{a[$1]=$0}NR>FNR{print a[$1]}' tmp sort.nid > tmp.
 
 # 求和
 awk '{sum += $1};END {print sum}' test
+
+# 删除某列
+
+awk -F, '{$2=null;print $0}'
+
+# 正则表达式
+
+awk ‘/REG/{action}’
+/REG/为正则表达式，可以将$0中，满足条件记录 送入到：action进行处理.
+
+gawk 'match($0, /nid=(.+)/, a){print a[1]}' tmp 

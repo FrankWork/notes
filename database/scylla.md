@@ -2,6 +2,8 @@ C++ Cassandra
 
 fuck! can't compile
 
+https://www.scylladb.com/
+
 ```bash
 cd /etc/sysconfig/network-scripts/
 ifup ifcfg-enp0s3
