@@ -14,7 +14,13 @@ ssh [-1246AaCfGgKkMNnqsTtVvXxYy] [-b bind_address] [-c cipher_spec]
            [-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-p port]
            [-Q query_option] [-R address] [-S ctl_path] [-W host:port]
            [-w local_tun[:remote_tun]] [user@]hostname [command]
+# ControlMaster
 
+vi ~/.ssh/config
+
+Host *
+	ControlMaster auto
+	ControlPath ~/.ssh/master-%r@%h:%p
 
 
 

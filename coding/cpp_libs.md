@@ -96,3 +96,14 @@ make install
 ```
 opencc -i input.txt -o output.txt -c ~/local/share/opencc/t2s.json
 
+
+## OpenMPI
+
+```
+./configure CC=/opt/compiler/gcc-4.8.2/bin/gcc CXX=/opt/compiler/gcc-4.8.2/bin/g++  --prefix=/home/local/ --enable-mpi-cxx=yes
+make all install
+
+
+export PATH=$PATH:/home/local/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/local/lib
+```

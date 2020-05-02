@@ -222,7 +222,7 @@ git reset [--hard|soft|mixed|merge|keep] [commit|HEAD]
 	git checkout develop
 	git stash pop
 
-# 撤销branch合并
+# 撤销branch合并, 回滚master代码
 
 $ git log
 commit 885ecaff2132c42008f4703766aceed2dd8715c4

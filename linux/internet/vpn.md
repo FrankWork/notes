@@ -1,3 +1,53 @@
+# install v2ray
+
+wget https://install.direct/go.sh
+sudo bash go.sh
+systemctl start v2ray
+
+vim /etc/v2ray/config.json
+
+{
+  "inbounds": [
+    {
+      "port": 40827,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "505f001d-4aa8-4519-9c54-6b65749ee3fb",
+            "alterId": 64
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "mkcp",
+        "kcpSettings": {
+          "uplinkCapacity": 5,
+          "downlinkCapacity": 100,
+          "congestion": true,
+          "header": {
+            "type": "wechat-video"
+          }
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    }
+  ]
+}
+
+
+systemctl restart v2ray
+firewall-cmd --zone=public --add-port=24556/udp --permanent
+firewall-cmd --reload
+vi /etc/rc.local
+	systemctl restart v2ray
+
+
 ## install shadowsocks-go
 
 wget https://github.com/shadowsocks/shadowsocks-go/releases/download/1.2.1/shadowsocks-server.tar.gz
@@ -84,53 +134,4 @@ $ firewall-cmd --reload
 ```
 
 
-
-# install v2ray
-
-wget https://install.direct/go.sh
-sudo bash go.sh
-systemctl start v2ray
-
-vi /etc/v2ray/config.json
-
-{
-  "inbounds": [
-    {
-      "port": 40827,
-      "protocol": "vmess",
-      "settings": {
-        "clients": [
-          {
-            "id": "505f001d-4aa8-4519-9c54-6b65749ee3fb",
-            "alterId": 64
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "mkcp",
-        "kcpSettings": {
-          "uplinkCapacity": 5,
-          "downlinkCapacity": 100,
-          "congestion": true,
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    }
-  ],
-  "outbounds": [
-    {
-      "protocol": "freedom",
-      "settings": {}
-    }
-  ]
-}
-
-
-systemctl restart v2ray
-firewall-cmd --zone=public --add-port=24556/udp --permanent
-firewall-cmd --reload
-vi /etc/rc.local
-	systemctl restart v2ray
 

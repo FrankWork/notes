@@ -31,4 +31,4 @@ wlp8s0    Link encap:以太网  硬件地址 08:ed:b9:5a:80:a2
 $ wget http://members.3322.org/dyndns/getip
 $ cat getip
 
-
+# hostname -i
